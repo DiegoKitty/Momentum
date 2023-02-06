@@ -20,6 +20,51 @@ const showTime = () => {
 
 showTime();
 
+// Часы и календарь
+
+// Приветствие
+
+const greeting = document.querySelector(".greeting");
+const name = document.querySelector(".name");
+const greetings = {
+    0: "Night",
+    1: "Morning",
+    2: "Afternoon",
+    3: "Evening",
+}
+
+const showGreeting = () => {
+    const date = new Date();
+    const hours = date.getHours();
+    greeting.textContent = `Good ${greetings[Math.floor(hours / 6)]},`;
+    setTimeout(showGreeting, 1000);
+}
+
+showGreeting ();
+
+// Сохранение имени пользователя в local storage
+
+function setLocalStorage () {
+    localStorage.setItem('name', name.value);
+  }
+
+window.addEventListener('beforeunload', setLocalStorage);
+
+function getLocalStorage() {
+    if(localStorage.getItem('name')) {
+      name.value = localStorage.getItem('name');
+    }
+  }
+
+window.addEventListener('load', getLocalStorage);
+
+// Приветствие
+
+
+
+
+
+
 
 
 
