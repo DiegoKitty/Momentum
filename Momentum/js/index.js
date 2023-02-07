@@ -143,7 +143,7 @@ async function getWeather() {
   const data = await res.json();
 
   if (res.ok === false) {
-    alert ("Вы ввели некорретное название города, попробуйте еще раз.","");
+    alert ("Вы ввели некорректное название города, попробуйте еще раз.","");
     temperature.textContent = `°C: неизвестно`;
     wind.textContent = `Ветер: неизвестно`;
     weatherDescription.textContent = "";
