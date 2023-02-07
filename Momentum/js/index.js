@@ -78,11 +78,11 @@ let randomNum = getRandomNum(1, 20);
 
 const setBg = () => {
     const greeting = showGreeting().toLowerCase();
-    const bgNum = randomNum.toString().padStart(2, "0");
+    const bgNum = randomNum.toString();
     const img = new Image();
     getRandomNum(1, 20);
-
-    img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${greeting}/${bgNum}.jpg`;
+    // img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${greeting}/${bgNum}.jpg`;
+    img.src = `https://github.com/DiegoKitty/Momentum/blob/background-image/images/${greeting}/${bgNum}.jpg?raw=true`;
 
     img.onload = () => {      
         document.body.style.backgroundImage = `url(${img.src})`

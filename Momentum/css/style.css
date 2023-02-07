@@ -17,6 +17,9 @@ body {
   color: #fff;
   text-align: center;
   background-blend-mode: multiply;
+  /* background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center; */
   background: rgba(0, 0, 0, 0.75);
   transition: background-image 0.3s ease-in-out;
 }
@@ -232,7 +235,7 @@ body {
   justify-content: stretch;
   align-items: center;
   min-height: 48px;
-  width: 100vw;
+  width: 100%;
   font-size: 40px;
 }
 
