@@ -1,3 +1,13 @@
+// Получение данных из local storage
+// localStorage.clear();
+function getLocalStorage() {
+  if(localStorage.getItem(`name`)) {
+    name.value = localStorage.getItem(`name`);
+  }
+}
+
+window.addEventListener('load', getLocalStorage);
+
 // Часы и календарь
 
 const time = document.querySelector(".time");
@@ -6,7 +16,7 @@ const options = {weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC'
 
 const showDay = () => {
     const date = new Date();
-    const currentDay = date.toLocaleDateString('ru-RU', options);
+    const currentDay = date.toLocaleDateString('en-US', options);
     day.textContent = currentDay;
 }
 
@@ -44,21 +54,9 @@ const showGreeting = () => {
 
 showGreeting ();
 
-// Сохранение имени пользователя в local storage
-
-function setLocalStorage () {
-    localStorage.setItem('name', name.value);
-  }
-
-window.addEventListener('beforeunload', setLocalStorage);
-
-function getLocalStorage() {
-    if(localStorage.getItem('name')) {
-      name.value = localStorage.getItem('name');
-    }
-  }
-
-window.addEventListener('load', getLocalStorage);
+name.addEventListener('change', () => {
+  localStorage.setItem(`name`, name.value);
+})
 
 // Приветствие
 
@@ -115,6 +113,82 @@ slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
 
 // Слайдер
+
+// Погода 
+
+const city = document.querySelector(".city");
+
+if (localStorage.getItem('city')) {
+  city.value = localStorage.getItem('city');
+} else {
+  city.value = "Minsk"
+}
+
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDescription = document.querySelector('.weather-description');
+const wind = document.querySelector(".wind");
+const humidity = document.querySelector(".humidity");
+
+async function getWeather() {  
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=b25a46f3be30efc5d4073ed15168bb49&units=metric`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  if (res.ok === false) {
+    alert ("Вы ввели некорретное название города, попробуйте еще раз.","");
+    temperature.textContent = `°C: неизвестно`;
+    wind.textContent = `Ветер: неизвестно`;
+    weatherDescription.textContent = "";
+    humidity.textContent = `Влажность: неизвестно`
+  } else {
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${Math.round(data.main.temp)}°C`;
+    weatherDescription.textContent = data.weather[0].description;
+    wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
+    humidity.textContent = `Humidity: ${data.main.humidity}%`
+  }
+}
+
+getWeather();
+
+city.addEventListener('change', () => {
+  localStorage.city = city.value;
+  getWeather();
+})
+
+// Погода 
+
+// Цитаты
+
+const quote = document.querySelector(".quote");
+const author = document.querySelector(".author");
+const changeQuote = document.querySelector(".change-quote");
+
+let randomNumOfQuote = getRandomNum(0, 101);
+
+async function getQuotes() {  
+  const quotes = './json/quotes.json';
+  const res = await fetch(quotes);
+  const data = await res.json(); 
+
+  quote.textContent = `"${data[randomNumOfQuote].quote}"`;
+  author.textContent = data[randomNumOfQuote].author;
+}
+
+getQuotes();
+
+changeQuote.addEventListener("click", () => {
+  randomNumOfQuote = getRandomNum(0, 101);
+  getQuotes();
+})
+
+// Цитаты
+
+
+
+
+
  
 
 
