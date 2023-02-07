@@ -1,5 +1,12 @@
+// Показывать содержимое страницы только тогда, когда она будет полностью готова к отображению
+
+window.addEventListener('load', function () {
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+});
+
 // Получение данных из local storage
 // localStorage.clear();
+
 function getLocalStorage() {
   if(localStorage.getItem(`name`)) {
     name.value = localStorage.getItem(`name`);
@@ -78,7 +85,7 @@ let randomNum = getRandomNum(1, 20);
 
 const setBg = () => {
     const greeting = showGreeting().toLowerCase();
-    const bgNum = randomNum.toString();
+    const bgNum = randomNum.toString().padStart(2, 0);
     const img = new Image();
     getRandomNum(1, 20);
     // img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${greeting}/${bgNum}.jpg`;
@@ -184,7 +191,6 @@ changeQuote.addEventListener("click", () => {
 })
 
 // Цитаты
-
 
 
 
