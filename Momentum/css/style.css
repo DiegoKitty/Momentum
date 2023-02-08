@@ -28,6 +28,12 @@ body {
   transition: background-image 0.5s linear;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -55,23 +61,19 @@ body {
 .play-item {
   position: relative;
   padding: 5px;
-  padding-left: 20px;
+  padding-left: 40px;
+  font-size: 20px;
   list-style: none;
-  opacity: .8;
+  background-image: url("../assets/svg/play.svg");
+  background-repeat: no-repeat;
+  background-position: -65px center;
+  background-size: 75% 75%;
   cursor: pointer;
   transition: .3s;
 }
 
 .play-item:hover {
   opacity: 1;
-}
-
-.play-item::before {
-  content: "\2713";  
-  position: absolute;
-  left: 0;
-  top: 2px;
-  font-weight: 900;
 }
 
 .item-active::before {
@@ -127,6 +129,13 @@ body {
   background-image: url("../assets/svg/play-next.svg");
 }
 
+.play-item--active {
+  color: #9bad12;
+}
+
+.play-item--pause {
+  background-image: url(../assets/svg/pause.svg);
+}
 /* PLAYER */
 
 /* WEATHER */

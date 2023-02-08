@@ -1,3 +1,6 @@
+import playList from './playList.js';
+
+
 // Показывать содержимое страницы только тогда, когда она будет полностью готова к отображению
 
 window.addEventListener('load', function () {
@@ -192,6 +195,167 @@ changeQuote.addEventListener("click", () => {
 
 // Цитаты
 
+// Аудиоплеер
+const playListContainer = document.querySelector(".play-list");
+const playPrev = document.querySelector(".play-prev");
+const playNext = document.querySelector(".play-next");
+const play = document.querySelector(".play");
+const audio = new Audio();
+let isPlay = false;
+let playAudioNum = 0;
+let playListArray;
+let indexOfActiveAudio = null;
+
+playList.forEach(el => {
+  const li = document.createElement('li');
+  li.textContent = el.title;
+  li.classList.add("play-item")
+  playListContainer.append(li);
+})
+
+const audioPlayList = document.querySelectorAll(".play-item");
+
+// Запуск нужной песни
+
+function playAudio() {
+  audio.src = playList[playAudioNum].src;
+  audio.currentTime = 0;
+
+  audioPlayList.forEach(audio => {
+    audio.classList.remove("play-item--active");
+  })
+
+  audioPlayList[playAudioNum].classList.add("play-item--active");
+
+  if(!isPlay) {
+    audio.pause();
+    console.log("if")
+  } else {
+    audio.play();
+    console.log("else")
+  }
+}
+
+// Запуск песни при клике на элемент списка + смена иконки паузы
+
+audioPlayList.forEach((el, index) => {
+  el.addEventListener("click", (e) => {
+
+    if(e.target.classList.contains("play-item--active") === false && isPlay === true) {
+      audioPlayList.forEach(el => {
+        el.classList.remove("pause");
+      })
+
+      playAudioNum = index;
+      play.classList.remove("pause");
+      playAudio();
+
+    } else if(e.target.classList.contains("play-item--active") === false) {
+      playAudioNum = index;
+      isPlay = !isPlay;
+      play.classList.add("pause");
+      el.classList.add("pause")
+      playAudio();
+
+    } else if (e.target.classList.contains("play-item--active")) {
+      isPlay = !isPlay;
+      el.classList.remove("pause")
+      play.classList.remove("pause");
+      playAudio();
+    }
+    
+    if (e.target.classList.contains("play-item--active") && isPlay) {
+      play.classList.add("pause");
+      el.classList.add("pause")
+    }
+  })
+})
+
+// Получить индекс активного аудио
+
+function getIndexOfActiveAudio () {
+  playListArray = Array.from(audioPlayList).filter((el, index) => {
+    if(el.classList.contains("play-item--active")) {
+      indexOfActiveAudio = index;
+    }
+  })
+  return indexOfActiveAudio;
+}
+
+// Кнопка включить/остановить проигрывание
+
+play.addEventListener("click", () => {
+  if (isPlay) {
+    audioPlayList.forEach(el => {
+      el.classList.remove("pause");
+    })
+  }
+
+  if(getIndexOfActiveAudio() != null && !isPlay) {
+    audioPlayList[getIndexOfActiveAudio()].classList.add("pause");
+  } else if (getIndexOfActiveAudio() != null && isPlay) {
+    audioPlayList[getIndexOfActiveAudio()].classList.remove("pause");
+  } else if (getIndexOfActiveAudio() === null) {
+    audioPlayList[0].classList.add("pause")
+  }
+
+
+  play.classList.toggle("pause");
+  isPlay = !isPlay;
+  playAudio();
+})
+
+// Переключатель музыки вперед/назад
+
+const playOtherAudio = () => {
+  play.classList.add("pause");
+  if(!isPlay) {
+    isPlay = !isPlay;
+  }
+}
+
+playNext.addEventListener("click", () => {
+  playAudioNum += 1;
+  if (playAudioNum === 4) {
+    playAudioNum = 0;
+  }
+
+  // Убрать иконку паузы у предыдущей песни, после добавить текущей
+  if (getIndexOfActiveAudio() != null) {
+    audioPlayList[getIndexOfActiveAudio()].classList.remove("pause")
+  } 
+  audioPlayList[playAudioNum].classList.add("pause");
+  playOtherAudio();
+  playAudio();
+}) 
+
+playPrev.addEventListener("click", () => {
+  playAudioNum -= 1;
+  if (playAudioNum === -1) {
+    playAudioNum = 3;
+  }
+
+  // Убрать иконку паузы у предыдущей песни, после добавить текущей
+  if (getIndexOfActiveAudio() != null) {
+    audioPlayList[getIndexOfActiveAudio()].classList.remove("pause")
+  } 
+  audioPlayList[playAudioNum].classList.add("pause");
+  
+  playOtherAudio();
+  playAudio();
+}) 
+
+// Автоматическое переключение аудио
+
+audio.addEventListener("ended", () => {
+  audioPlayList[getIndexOfActiveAudio()].classList.remove("pause")
+  playAudioNum += 1;
+  if(playAudioNum === 4) {
+    playAudioNum = 0;
+  }
+  audioPlayList[playAudioNum].classList.add("pause");
+  playAudio();
+});
 
 
 
