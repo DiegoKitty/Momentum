@@ -50,8 +50,8 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 120px;
-  margin-bottom: 28px;
+  width: 135px;
+  margin-bottom: 15px;
 }
 
 .play-list {
@@ -130,7 +130,7 @@ ul {
 }
 
 .play-item--active {
-  color: #9bad12;
+  color: aqua;
 }
 
 .play-item--pause {
@@ -320,4 +320,51 @@ ul {
     font-size: 32px;
     padding: 5px;
   }
+}
+
+
+
+/* плерр */
+
+.player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  min-width: 250px;
+  background-color: rgba(71, 62, 62, 0.5);
+  border-radius: 10px;
+}
+
+.song-name {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: aqua;
+}
+
+.control {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.control-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.timeline {
+  position: relative;
+  background: white;
+  height: 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.progress {
+  background: coral;
+  width: 0%;
+  height: 100%;
+  transition: 0.25s;
 }

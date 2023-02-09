@@ -1,6 +1,5 @@
 import playList from './playList.js';
 
-
 // Показывать содержимое страницы только тогда, когда она будет полностью готова к отображению
 
 window.addEventListener('load', function () {
@@ -40,10 +39,10 @@ const showTime = () => {
 
 showTime();
 
-// Часы и календарь
+// Часы и календарь ----------------------------------------------------------------
 
 
-// Приветствие
+// Приветствие ---------------------------------------------------------------------
 
 const greeting = document.querySelector(".greeting");
 const name = document.querySelector(".name");
@@ -68,10 +67,10 @@ name.addEventListener('change', () => {
   localStorage.setItem(`name`, name.value);
 })
 
-// Приветствие
+// Приветствие ---------------------------------------------------------------------
 
 
-// Слайдер
+// Слайдер -------------------------------------------------------------------------
 
 const slideNext = document.querySelector(".slide-next");
 const slidePrev = document.querySelector(".slide-prev");
@@ -84,47 +83,45 @@ const getRandomNum = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-let randomNum = getRandomNum(1, 20);
-
 const setBg = () => {
-    const greeting = showGreeting().toLowerCase();
-    const bgNum = randomNum.toString().padStart(2, 0);
-    const img = new Image();
-    getRandomNum(1, 20);
-    // img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${greeting}/${bgNum}.jpg`;
-    img.src = `https://github.com/DiegoKitty/Momentum/blob/background-image/images/${greeting}/${bgNum}.jpg?raw=true`;
-
-    img.onload = () => {      
-        document.body.style.backgroundImage = `url(${img.src})`
-      }; 
+  const greeting = showGreeting().toLowerCase();
+  const bgNum = randomNum.toString().padStart(2, 0);
+  const img = new Image();
+  getRandomNum(1, 20);
+  img.src = `https://github.com/DiegoKitty/Momentum/blob/background-image/images/${greeting}/${bgNum}.jpg?raw=true`;
+  
+  img.onload = () => {      
+    document.body.style.backgroundImage = `url(${img.src})`
+  }; 
 }
 
+let randomNum = getRandomNum(1, 20);
 setBg();
 
-// Менять фон при клике на слайдер
+// Менять фон при клике на слайдер ------------------------------------------------
 
 const getSlideNext = () => {
-    randomNum += 1;
+  randomNum += 1;
   if (randomNum === 21) {
     randomNum = 1;
   }
-      setBg();
+  setBg();
 }
 
 const getSlidePrev = () => {
-    randomNum -= 1;
+  randomNum -= 1;
   if (randomNum === 1) {
     randomNum = 20;
   }
-      setBg();
+  setBg();
 }
 
 slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
 
-// Слайдер
+// Слайдер -----------------------------------------------------------------------
 
-// Погода 
+// Погода  -----------------------------------------------------------------------
 
 const city = document.querySelector(".city");
 
@@ -160,51 +157,57 @@ async function getWeather() {
   }
 }
 
-getWeather();
-
 city.addEventListener('change', () => {
   localStorage.city = city.value;
   getWeather();
 })
 
-// Погода 
+getWeather();
 
-// Цитаты
+// Погода -----------------------------------------------------------------------
+
+// Цитаты -----------------------------------------------------------------------
 
 const quote = document.querySelector(".quote");
 const author = document.querySelector(".author");
 const changeQuote = document.querySelector(".change-quote");
-
 let randomNumOfQuote = getRandomNum(0, 101);
 
 async function getQuotes() {  
   const quotes = './json/quotes.json';
   const res = await fetch(quotes);
   const data = await res.json(); 
-
   quote.textContent = `"${data[randomNumOfQuote].quote}"`;
   author.textContent = data[randomNumOfQuote].author;
 }
-
-getQuotes();
 
 changeQuote.addEventListener("click", () => {
   randomNumOfQuote = getRandomNum(0, 101);
   getQuotes();
 })
 
-// Цитаты
+getQuotes();
 
-// Аудиоплеер
+// Цитаты -----------------------------------------------------------------------
+
+// Аудиоплеер -------------------------------------------------------------------
+
 const playListContainer = document.querySelector(".play-list");
 const playPrev = document.querySelector(".play-prev");
 const playNext = document.querySelector(".play-next");
 const play = document.querySelector(".play");
 const audio = new Audio();
-let isPlay = false;
 let playAudioNum = 0;
-let playListArray;
+audio.src = playList[playAudioNum].src;
+
+let isPlay = false;
 let indexOfActiveAudio = null;
+let playListArray;
+
+const songName = document.querySelector(".song-name");
+const songTime = document.querySelector(".song-time");
+
+// Генерация списка из песен ----------------------------------------------------
 
 playList.forEach(el => {
   const li = document.createElement('li');
@@ -215,61 +218,24 @@ playList.forEach(el => {
 
 const audioPlayList = document.querySelectorAll(".play-item");
 
-// Запуск нужной песни
+audio.onloadedmetadata = function() {
+  songName.textContent = playList[playAudioNum].title;
+};
+
+// Запуск песни -----------------------------------------------------------------
 
 function playAudio() {
-  audio.src = playList[playAudioNum].src;
-  audio.currentTime = 0;
-
   audioPlayList.forEach(audio => {
     audio.classList.remove("play-item--active");
   })
 
   audioPlayList[playAudioNum].classList.add("play-item--active");
-
   if(!isPlay) {
     audio.pause();
-    console.log("if")
   } else {
     audio.play();
-    console.log("else")
   }
 }
-
-// Запуск песни при клике на элемент списка + смена иконки паузы
-
-audioPlayList.forEach((el, index) => {
-  el.addEventListener("click", (e) => {
-
-    if(e.target.classList.contains("play-item--active") === false && isPlay === true) {
-      audioPlayList.forEach(el => {
-        el.classList.remove("pause");
-      })
-
-      playAudioNum = index;
-      play.classList.remove("pause");
-      playAudio();
-
-    } else if(e.target.classList.contains("play-item--active") === false) {
-      playAudioNum = index;
-      isPlay = !isPlay;
-      play.classList.add("pause");
-      el.classList.add("pause")
-      playAudio();
-
-    } else if (e.target.classList.contains("play-item--active")) {
-      isPlay = !isPlay;
-      el.classList.remove("pause")
-      play.classList.remove("pause");
-      playAudio();
-    }
-    
-    if (e.target.classList.contains("play-item--active") && isPlay) {
-      play.classList.add("pause");
-      el.classList.add("pause")
-    }
-  })
-})
 
 // Получить индекс активного аудио
 
@@ -281,69 +247,6 @@ function getIndexOfActiveAudio () {
   })
   return indexOfActiveAudio;
 }
-
-// Кнопка включить/остановить проигрывание
-
-play.addEventListener("click", () => {
-  if (isPlay) {
-    audioPlayList.forEach(el => {
-      el.classList.remove("pause");
-    })
-  }
-
-  if(getIndexOfActiveAudio() != null && !isPlay) {
-    audioPlayList[getIndexOfActiveAudio()].classList.add("pause");
-  } else if (getIndexOfActiveAudio() != null && isPlay) {
-    audioPlayList[getIndexOfActiveAudio()].classList.remove("pause");
-  } else if (getIndexOfActiveAudio() === null) {
-    audioPlayList[0].classList.add("pause")
-  }
-
-
-  play.classList.toggle("pause");
-  isPlay = !isPlay;
-  playAudio();
-})
-
-// Переключатель музыки вперед/назад
-
-const playOtherAudio = () => {
-  play.classList.add("pause");
-  if(!isPlay) {
-    isPlay = !isPlay;
-  }
-}
-
-playNext.addEventListener("click", () => {
-  playAudioNum += 1;
-  if (playAudioNum === 4) {
-    playAudioNum = 0;
-  }
-
-  // Убрать иконку паузы у предыдущей песни, после добавить текущей
-  if (getIndexOfActiveAudio() != null) {
-    audioPlayList[getIndexOfActiveAudio()].classList.remove("pause")
-  } 
-  audioPlayList[playAudioNum].classList.add("pause");
-  playOtherAudio();
-  playAudio();
-}) 
-
-playPrev.addEventListener("click", () => {
-  playAudioNum -= 1;
-  if (playAudioNum === -1) {
-    playAudioNum = 3;
-  }
-
-  // Убрать иконку паузы у предыдущей песни, после добавить текущей
-  if (getIndexOfActiveAudio() != null) {
-    audioPlayList[getIndexOfActiveAudio()].classList.remove("pause")
-  } 
-  audioPlayList[playAudioNum].classList.add("pause");
-  
-  playOtherAudio();
-  playAudio();
-}) 
 
 // Автоматическое переключение аудио
 
@@ -357,9 +260,116 @@ audio.addEventListener("ended", () => {
   playAudio();
 });
 
+// Кнопка включить/остановить проигрывание
+
+play.addEventListener("click", () => {
+  if (isPlay) {
+    audioPlayList.forEach(el => {
+      el.classList.remove("pause");
+    })
+  }
+
+  if (getIndexOfActiveAudio() !== null && !isPlay) audioPlayList[getIndexOfActiveAudio()].classList.add("pause");
+  else if (getIndexOfActiveAudio() && isPlay) audioPlayList[getIndexOfActiveAudio()].classList.remove("pause");
+  else if (getIndexOfActiveAudio() === null) audioPlayList[0].classList.add("pause");
+
+  play.classList.toggle("pause");
+  isPlay = !isPlay;
+  playAudio();
+})
+
+// Переключатель музыки вперед/назад
+
+const playOtherAudio = () => {
+  
+  play.classList.add("pause");
+  if(!isPlay) {
+    isPlay = !isPlay;
+  }
+  audio.src = playList[playAudioNum].src;
+
+  // Убрать иконку паузы у предыдущей песни, после добавить текущей
+
+  if (getIndexOfActiveAudio() !== null) audioPlayList[getIndexOfActiveAudio()].classList.remove("pause"); 
+  audioPlayList[playAudioNum].classList.add("pause");
+  playAudio();
+}
+
+playNext.addEventListener("click", () => {
+  playAudioNum += 1;
+  if (playAudioNum === 4) {
+    playAudioNum = 0;
+  }
+  playOtherAudio();
+}) 
+
+playPrev.addEventListener("click", () => {
+  playAudioNum -= 1;
+  if (playAudioNum === -1) {
+    playAudioNum = 3;
+  }
+  playOtherAudio();
+}) 
+
+// Переключить песню при клике на трек из списка
+
+const changeActiveAudio = (index) => {
+  playAudioNum = index;
+  songName.textContent = playList[playAudioNum].title;
+  audio.src = playList[playAudioNum].src;
+  playAudio();
+}
+
+const addPauseIcon = (el) => {
+  play.classList.add("pause");
+  el.classList.add("pause")
+}
+
+function getTimeCodeFromNum(num) {
+  let seconds = parseInt(num);
+  let minutes = parseInt(seconds / 60);
+  seconds -= minutes * 60;
+  return `${minutes}:${String(seconds % 60).padStart(2, 0)} / ${playList[playAudioNum].duration}`;
+}
+
+// Запуск песни при клике на элемент списка + смена иконки паузы
+
+audioPlayList.forEach((el, index) => {
+  el.addEventListener("click", () => {
+    if(!el.classList.contains("play-item--active") && isPlay) {
+      audioPlayList.forEach(el => {
+        el.classList.remove("pause");
+      })
+      changeActiveAudio(index);
+      play.classList.remove("pause");
+      playAudio();
+
+    } else if(!el.classList.contains("play-item--active")) {
+      isPlay = !isPlay;
+      changeActiveAudio(index);
+      addPauseIcon(el);
+      playAudio();
+
+    } else if (el.classList.contains("play-item--active")) {
+      isPlay = !isPlay;
+      play.classList.remove("pause");
+      el.classList.remove("pause");
+      playAudio();
+    }
+    
+    if (el.classList.contains("play-item--active") && isPlay) addPauseIcon(el);
+  })
+})
 
 
- 
+
+// Продвинутый плеер -------------------------------------------------------------
+
+ // Обновление текущей секунды аудио
+
+setInterval(() => {
+  songTime.textContent = getTimeCodeFromNum(audio.currentTime);
+}, 500);
 
 
 
