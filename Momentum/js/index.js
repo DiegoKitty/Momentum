@@ -144,10 +144,10 @@ async function getWeather() {
 
   if (res.ok === false) {
     alert ("Вы ввели некорректное название города, попробуйте еще раз.","");
-    temperature.textContent = `°C: неизвестно`;
-    wind.textContent = `Ветер: неизвестно`;
+    temperature.textContent = `°C: unknown`;
+    wind.textContent = `Wind speed: unknown`;
     weatherDescription.textContent = "";
-    humidity.textContent = `Влажность: неизвестно`
+    humidity.textContent = `Humidity: unknown`
   } else {
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
