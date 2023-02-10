@@ -2,9 +2,27 @@
 
 const playList = [
     {      
+      title: 'Slow Down',
+      author: "Chris Linton",
+      src: './assets/sounds/Slow Down.mp3',
+      duration: '3:38',
+    },  
+    {      
+      title: 'Down',
+      author: "Skyfall Beats",
+      src: './assets/sounds/Down.mp3',
+      duration: '2:59',
+    },  
+    {      
+      title: 'Runaway (Heuse Remix)',
+      author: "Halcyon",
+      src: './assets/sounds/Runaway (Heuse Remix).mp3',
+      duration: '2:09',
+    },  
+    {      
       title: 'Broken Bones',
       author: "Burgos",
-      src: './assets/sounds/BROKEN BONES.mp3',
+      src: './assets/sounds/Broken Bones.mp3',
       duration: '2:26',
     },  
     {      

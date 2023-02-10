@@ -362,6 +362,12 @@ audioPlayList.forEach((el, index) => {
 
 // Продвинутый плеер -------------------------------------------------------------
 
+const openList = document.querySelector(".dropdown-list");
+
+openList.addEventListener("click", () => {
+  playListContainer.classList.toggle("open-list");
+})
+
 volumeBtn.addEventListener("click", () => {
   volumeBtn.classList.toggle("volume-button--mute")
   audio.muted = !audio.muted;
