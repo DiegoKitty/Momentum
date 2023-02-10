@@ -31,7 +31,7 @@ const showDay = () => {
 
 const showTime = () => {
     const date = new Date();
-    const currentTime = date.toLocaleTimeString('en-US');
+    const currentTime = date.toLocaleTimeString();
     time.textContent = currentTime;
     showDay()
     setTimeout(showTime, 1000);
