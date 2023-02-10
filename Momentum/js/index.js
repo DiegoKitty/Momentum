@@ -31,7 +31,7 @@ const showDay = () => {
 
 const showTime = () => {
     const date = new Date();
-    const currentTime = date.toLocaleTimeString();
+    const currentTime = date.toLocaleTimeString('en-US');
     time.textContent = currentTime;
     showDay()
     setTimeout(showTime, 1000);
@@ -196,6 +196,9 @@ const playListContainer = document.querySelector(".play-list");
 const playPrev = document.querySelector(".play-prev");
 const playNext = document.querySelector(".play-next");
 const play = document.querySelector(".play");
+const volumeBtn = document.querySelector(".volume-button");
+const volumeSlider = document.querySelector(".volume-slider");
+const volumeLine = document.querySelector(".volume-line");
 const audio = new Audio();
 let playAudioNum = 0;
 audio.src = playList[playAudioNum].src;
@@ -206,6 +209,7 @@ let playListArray;
 
 const songName = document.querySelector(".song-name");
 const songTime = document.querySelector(".song-time");
+const authorName = document.querySelector(".author-name");
 
 // Генерация списка из песен ----------------------------------------------------
 
@@ -219,8 +223,14 @@ playList.forEach(el => {
 const audioPlayList = document.querySelectorAll(".play-item");
 
 audio.onloadedmetadata = function() {
+  let volume = parseFloat((getComputedStyle(volumeLine).width))/ 10;
   songName.textContent = playList[playAudioNum].title;
-  audio.volume = 0.65;
+  authorName.textContent = playList[playAudioNum].author;
+
+  if(volumeSlider.classList.contains("volume-slider--active")) {
+    volume /= 10;
+  }
+  audio.volume = volume;
 };
 
 // Запуск песни -----------------------------------------------------------------
@@ -229,7 +239,7 @@ function playAudio() {
   audioPlayList.forEach(audio => {
     audio.classList.remove("play-item--active");
   })
-
+  
   audioPlayList[playAudioNum].classList.add("play-item--active");
   if(!isPlay) {
     audio.pause();
@@ -248,19 +258,6 @@ function getIndexOfActiveAudio () {
   })
   return indexOfActiveAudio;
 }
-
-// Автоматическое переключение аудио
-
-audio.addEventListener("ended", () => {
-  audioPlayList[getIndexOfActiveAudio()].classList.remove("pause")
-  playAudioNum += 1;
-  if(playAudioNum === 4) {
-    playAudioNum = 0;
-  }
-  audioPlayList[playAudioNum].classList.add("pause");
-  audio.src = playList[playAudioNum].src;
-  playAudio();
-});
 
 // Кнопка включить/остановить проигрывание
 
@@ -299,7 +296,7 @@ const playOtherAudio = () => {
 
 playNext.addEventListener("click", () => {
   playAudioNum += 1;
-  if (playAudioNum === 4) {
+  if (playAudioNum === playList.length) {
     playAudioNum = 0;
   }
   playOtherAudio();
@@ -308,7 +305,7 @@ playNext.addEventListener("click", () => {
 playPrev.addEventListener("click", () => {
   playAudioNum -= 1;
   if (playAudioNum === -1) {
-    playAudioNum = 3;
+    playAudioNum = playList.length -1;
   }
   playOtherAudio();
 }) 
@@ -317,7 +314,6 @@ playPrev.addEventListener("click", () => {
 
 const changeActiveAudio = (index) => {
   playAudioNum = index;
-  songName.textContent = playList[playAudioNum].title;
   audio.src = playList[playAudioNum].src;
   playAudio();
 }
@@ -366,10 +362,6 @@ audioPlayList.forEach((el, index) => {
 
 // Продвинутый плеер -------------------------------------------------------------
 
-const volumeBtn = document.querySelector(".volume-button");
-const volumeSlider = document.querySelector(".volume-slider");
-const volumeLine = document.querySelector(".volume-line");
-
 volumeBtn.addEventListener("click", () => {
   volumeBtn.classList.toggle("volume-button--mute")
   audio.muted = !audio.muted;
@@ -407,10 +399,29 @@ setInterval(() => {
 
 volumeSlider.addEventListener('click', (e) => {
   const sliderWidth = getComputedStyle(volumeSlider).width;
-  const newVolume = e.offsetX / parseInt(sliderWidth);
-  audio.volume = newVolume;
-  volumeLine.style.width = newVolume * 100 + '%';
+  let newVolume = e.offsetX / parseInt(sliderWidth);
+  if (newVolume >= 0) {
+    audio.volume = newVolume;
+    volumeLine.style.width = newVolume * 100 + '%';
+  }
+  else {
+    newVolume = 0;
+    volumeLine.style.width = '1%';
+  }
 })
+
+// Автоматическое переключение аудио
+
+audio.addEventListener("ended", () => {
+  audioPlayList[getIndexOfActiveAudio()].classList.remove("pause")
+  playAudioNum += 1;
+  if(playAudioNum === 4) {
+    playAudioNum = 0;
+  }
+  audioPlayList[playAudioNum].classList.add("pause");
+  audio.src = playList[playAudioNum].src
+  playAudio();
+});
 
 
 

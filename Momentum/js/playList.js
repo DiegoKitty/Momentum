@@ -2,25 +2,42 @@
 
 const playList = [
     {      
-      title: 'Aqua Caelestis',
-      src: './assets/sounds/Aqua Caelestis.mp3',
-      duration: '0:39'
+      title: 'Broken Bones',
+      author: "Burgos",
+      src: './assets/sounds/BROKEN BONES.mp3',
+      duration: '2:26',
     },  
     {      
-      title: 'River Flows In You',
-      src: './assets/sounds/River Flows In You.mp3',
-      duration: '1:37'
-    },
+      title: 'А мы не ангелы, парень',
+      author: "Би-2",
+      src: './assets/sounds/А мы не ангелы, парень.mp3',
+      duration: '3:04',
+    },  
     {      
-      title: 'Ennio Morricone',
-      src: './assets/sounds/Ennio Morricone.mp3',
-      duration: '1:37'
-    },
+      title: 'After Dark',
+      author: "Mr.Kitty",
+      src: './assets/sounds/After Dark.mp3',
+      duration: '4:19',
+    },  
     {      
-      title: 'Summer Wind',
-      src: './assets/sounds/Summer Wind.mp3',
-      duration: '01:50'
-    },
+      title: 'Space Odyssey',
+      author: "SPVRROW",
+      src: './assets/sounds/Space Odyssey.mp3',
+      duration: '2:42',
+    },  
+    {      
+      title: 'Never Have I Felt This',
+      author: "Koven",
+      src: './assets/sounds/Never Have I Felt This.mp3',
+      duration: '4:07',
+    },  
+    {      
+      title: 'From the Inside',
+      author: "Linkin Park",
+      src: './assets/sounds/From the Inside.mp3',
+      duration: '2:53',
+    },  
+    
   ]
 
   export default playList;
