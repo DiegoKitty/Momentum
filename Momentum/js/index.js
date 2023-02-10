@@ -220,6 +220,7 @@ const audioPlayList = document.querySelectorAll(".play-item");
 
 audio.onloadedmetadata = function() {
   songName.textContent = playList[playAudioNum].title;
+  audio.volume = 0.65;
 };
 
 // Запуск песни -----------------------------------------------------------------
@@ -257,6 +258,7 @@ audio.addEventListener("ended", () => {
     playAudioNum = 0;
   }
   audioPlayList[playAudioNum].classList.add("pause");
+  audio.src = playList[playAudioNum].src;
   playAudio();
 });
 
@@ -362,14 +364,54 @@ audioPlayList.forEach((el, index) => {
 })
 
 
-
 // Продвинутый плеер -------------------------------------------------------------
+
+const volumeBtn = document.querySelector(".volume-button");
+const volumeSlider = document.querySelector(".volume-slider");
+const volumeLine = document.querySelector(".volume-line");
+
+volumeBtn.addEventListener("click", () => {
+  volumeBtn.classList.toggle("volume-button--mute")
+  audio.muted = !audio.muted;
+})
+
+volumeBtn.addEventListener("mousemove", () => {
+  volumeSlider.classList.add("volume-slider--active")
+})
+
+volumeBtn.addEventListener("mouseleave", () => {
+  volumeSlider.classList.remove("volume-slider--active")
+})
 
  // Обновление текущей секунды аудио
 
 setInterval(() => {
   songTime.textContent = getTimeCodeFromNum(audio.currentTime);
 }, 500);
+
+// Получить currentTime при клике на таймлайн
+
+const timeline = document.querySelector(".timeline");
+timeline.addEventListener("click", e => {
+  const timelineWidth = getComputedStyle(timeline).width;
+  const timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
+  audio.currentTime = timeToSeek;
+});
+
+setInterval(() => {
+  const progressBar = document.querySelector(".progress");
+  progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+  songTime.textContent = getTimeCodeFromNum(audio.currentTime);
+}, 100);
+
+
+volumeSlider.addEventListener('click', (e) => {
+  const sliderWidth = getComputedStyle(volumeSlider).width;
+  const newVolume = e.offsetX / parseInt(sliderWidth);
+  audio.volume = newVolume;
+  volumeLine.style.width = newVolume * 100 + '%';
+})
+
 
 
 

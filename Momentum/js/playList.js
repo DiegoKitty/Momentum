@@ -4,7 +4,7 @@ const playList = [
     {      
       title: 'Aqua Caelestis',
       src: './assets/sounds/Aqua Caelestis.mp3',
-      duration: '0:58'
+      duration: '0:39'
     },  
     {      
       title: 'River Flows In You',
@@ -14,7 +14,7 @@ const playList = [
     {      
       title: 'Ennio Morricone',
       src: './assets/sounds/Ennio Morricone.mp3',
-      duration: '3:50'
+      duration: '1:37'
     },
     {      
       title: 'Summer Wind',
