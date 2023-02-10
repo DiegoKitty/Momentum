@@ -110,7 +110,7 @@ const getSlideNext = () => {
 
 const getSlidePrev = () => {
   randomNum -= 1;
-  if (randomNum === 1) {
+  if (randomNum === 0) {
     randomNum = 20;
   }
   setBg();
