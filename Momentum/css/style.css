@@ -248,43 +248,21 @@ ul {
 
 .volume-slider {
   position: absolute;
-  left: -15px;
+  left: 70px;
   width: 10px;
   height: 15px;
   border-radius: 20px;
-  /* border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px; */
   background: white;
   cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
   transition: 0.3s ease-in-out;
 }
 
-.volume-slider:hover {
-  left: -105px; 
-  width: 100px;
-  opacity: 1;
-  visibility: visible;
-  transition: 0.3s ease-in-out;
-}
-
+.volume-slider:hover,
 .volume-slider--active {
-  left: -105px; 
+  left: -20px; 
   width: 100px;
   opacity: 1;
-  visibility: visible;
-  transition: 0.3s ease-in-out;
-}
-
-.volume-line {
-  height: 100%;
-  min-width: 5px;
-  width: 50%;
-  border-radius: 20px;
-  /* border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px; */
-  background: rgb(168, 173, 173);
+  transition: 0.3s ease-in-out; 
 }
 
 .dropdown-list {
