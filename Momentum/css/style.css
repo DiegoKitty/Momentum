@@ -251,7 +251,7 @@ ul {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background-color: rgba(114, 110, 110, 0.5);
-  background-image: url(../assets/img/icons8-double-32.png);
+  background-image: url(../assets/img/player-dropdown.png);
   background-repeat: no-repeat;
   background-position: center center;
   cursor: pointer;
@@ -447,7 +447,7 @@ ul {
   width: 400px;
   border-radius: 15px;
   font-size: 18px;
-  background-color: rgba(71, 62, 62, 1);
+  background-color: rgb(46, 38, 38);
   opacity: 0;
   visibility: hidden;
   transition: 0.3s ease-in-out;

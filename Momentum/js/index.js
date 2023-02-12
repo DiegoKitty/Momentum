@@ -480,12 +480,14 @@ const settingIcon = document.querySelector(".setting-icon");
 const settingHeading = document.querySelectorAll(".set-text");
 const enIcon = document.querySelector(".en-lang");
 const ruIcon = document.querySelector(".ru-lang");
-const setcheckbox = document.querySelectorAll(".slider");
+const setcheckbox = document.querySelectorAll(".checkbox");
 const player = document.querySelector(".player");
 const weather = document.querySelector(".weather");
 const greetingBlock = document.querySelector('.greeting-container');
 const quotes = document.querySelector(".quotes");
 const visibleBlock = [time, day, weather, greetingBlock, quotes, player];
+
+// Смена языка
 
 const changeLanguage = (language) => {
   if (!localStorage.getItem('city')) {
@@ -514,18 +516,51 @@ settingIcon.addEventListener("click", () => {
   playListContainer.classList.remove("open-list");
 })
 
-setcheckbox.forEach((el, index) => {
-  el.addEventListener("click", () => {
-    visibleBlock[index].classList.toggle("block-hidden");
-  })
-})
-
 settingHeading.forEach((el, index) => {
   el.textContent = lang.setting[index];
 })
 
+setcheckbox.forEach((el, index) => {
+  el.addEventListener("click", () => {
+    saveCheckbox()
+    visibleBlock[index].classList.toggle("block-hidden");
+  })
+})
 
-    
+// Сохранение положения чекбокса
+
+function saveCheckbox () {
+  let arrOfCheckbox = []
+  setcheckbox.forEach(input => {
+    arrOfCheckbox.push({ id: input.id, checked: input.checked });
+  })
+  localStorage.setItem('arrOfCheckbox', JSON.stringify(arrOfCheckbox));
+}
+
+function showBlocks () {
+  const arrOfCheckbox = JSON.parse(localStorage.getItem('arrOfCheckbox'));
+  arrOfCheckbox.forEach(input => {
+    document.getElementById(input.id).checked = input.checked;
+  })
+  setcheckbox.forEach ((input, index) => {
+    if(input.checked) {
+      visibleBlock[index].classList.add("block-hidden");
+  }
+})
+}
+
+if (localStorage.getItem("arrOfCheckbox")) {
+  showBlocks();
+}
+
+
+
+
+
+
+
+
+
 
 
 
