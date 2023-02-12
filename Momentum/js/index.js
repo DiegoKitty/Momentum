@@ -7,31 +7,78 @@ window.addEventListener('load', function () {
 });
 
 // Получение данных из local storage
+
 // localStorage.clear();
+
+const en = {
+  weather: {
+    lang: "en",
+    alert: "You entered an incorrect city name, try again.",
+    wind: "Wind speed:",
+    metre: "m/s",
+    humidity: "Humidity:",
+  },
+  city: "Minsk",
+  greetings: ["Good night", "Good morning", "Good afternoon", "Good evening"],
+  name: "Enter Name", 
+  day: "en-US",
+  time: "en-US",
+  quotesUrl: './json/quotesEN.json',
+  setting: ["General", "Customize your dashbord", "LANGUAGES", "Language", "HIDE", "Time", "Date", "Weather", "Gretings", "Quotes", "Player"]
+}
+
+const ru = {
+  weather: {
+    lang: "ru",
+    alert: "Вы ввели неверное наименование города, попробуйте еще раз.",
+    wind: "Ветер:",
+    metre: "м/с",
+    humidity: "Влажность:",
+  },
+  city: "Минск",
+  greetings: ["Доброй ночи", "Доброе утро", "Добрый день", "Добрый вечер"],
+  name: "Введите Имя",
+  day: "ru-RU",
+  time: "ru-RU",
+  quotesUrl: './json/quotesRU.json',
+  setting: ["Основные", "Настрой приложение", "ВЫБРАТЬ ЯЗЫК", "Язык", "СКРЫТЬ", "Часы", "Дата", "Погода", "Приветствие", "Цитаты", "Аудиоплеер"]
+}
+
+const name = document.querySelector(".name");
+const time = document.querySelector(".time");
+const day = document.querySelector(".day");
+const greeting = document.querySelector(".greeting");
+
+let lang;
+if(!localStorage.getItem(`lang`)) {
+  lang = en;
+}
 
 function getLocalStorage() {
   if(localStorage.getItem(`name`)) {
     name.value = localStorage.getItem(`name`);
   }
+
+  if(localStorage.getItem(`lang`)) {
+    lang = JSON.parse(localStorage.getItem(`lang`))
+    console.log(lang)
+  }
 }
 
-window.addEventListener('load', getLocalStorage);
+getLocalStorage();
 
 // Часы и календарь
 
-const time = document.querySelector(".time");
-const day = document.querySelector(".day");
 const options = {weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC'};
-
 const showDay = () => {
     const date = new Date();
-    const currentDay = date.toLocaleDateString('en-US', options);
+    const currentDay = date.toLocaleDateString(`${lang.day}`, options);
     day.textContent = currentDay;
 }
 
 const showTime = () => {
     const date = new Date();
-    const currentTime = date.toLocaleTimeString();
+    const currentTime = date.toLocaleTimeString(lang.time);
     time.textContent = currentTime;
     showDay()
     setTimeout(showTime, 1000);
@@ -44,21 +91,21 @@ showTime();
 
 // Приветствие ---------------------------------------------------------------------
 
-const greeting = document.querySelector(".greeting");
-const name = document.querySelector(".name");
+name.placeholder = lang.name;
+
 const greetings = {
-    0: "Night",
-    1: "Morning",
-    2: "Afternoon",
-    3: "Evening",
+  0: "Night",
+  1: "Morning",
+  2: "Afternoon",
+  3: "Evening",
 }
 
 const showGreeting = () => {
     const date = new Date();
     const hours = date.getHours();
-    greeting.textContent = `Good ${greetings[Math.floor(hours / 6)]},`;
+    greeting.textContent = `${lang.greetings[Math.floor(hours / 6)]},`;
     setTimeout(showGreeting, 1000);
-    return greetings[Math.floor(hours / 6)];
+    return greetings[Math.floor(hours / 6)]
 }
 
 showGreeting ();
@@ -138,22 +185,22 @@ const wind = document.querySelector(".wind");
 const humidity = document.querySelector(".humidity");
 
 async function getWeather() {  
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=en&appid=b25a46f3be30efc5d4073ed15168bb49&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=${lang.weather.lang}&appid=b25a46f3be30efc5d4073ed15168bb49&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
 
   if (res.ok === false) {
-    alert ("Вы ввели некорректное название города, попробуйте еще раз.","");
-    temperature.textContent = `°C: unknown`;
-    wind.textContent = `Wind speed: unknown`;
+    alert (lang.weather.alert,"");
+    temperature.textContent = "";
+    wind.textContent = ""
     weatherDescription.textContent = "";
-    humidity.textContent = `Humidity: unknown`
+    humidity.textContent = ""
   } else {
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${Math.round(data.main.temp)}°C`;
     weatherDescription.textContent = data.weather[0].description;
-    wind.textContent = `Wind speed: ${Math.round(data.wind.speed)} m/s`;
-    humidity.textContent = `Humidity: ${data.main.humidity}%`
+    wind.textContent = `${lang.weather.wind} ${Math.round(data.wind.speed)} ${lang.weather.metre}`;
+    humidity.textContent = `${lang.weather.humidity} ${data.main.humidity}%`
   }
 }
 
@@ -174,7 +221,8 @@ const changeQuote = document.querySelector(".change-quote");
 let randomNumOfQuote = getRandomNum(0, 101);
 
 async function getQuotes() {  
-  const quotes = './json/quotes.json';
+  let quotesUrl = lang.quotesUrl;
+  let quotes = quotesUrl;
   const res = await fetch(quotes);
   const data = await res.json(); 
   quote.textContent = `"${data[randomNumOfQuote].quote}"`;
@@ -365,7 +413,9 @@ audioPlayList.forEach((el, index) => {
 const openList = document.querySelector(".dropdown-list");
 
 openList.addEventListener("click", () => {
-  playListContainer.classList.toggle("open-list");
+  if (!settings.classList.contains("settings-active")) {
+    playListContainer.classList.toggle("open-list");
+  }
 })
 
 volumeBtn.addEventListener("click", () => {
@@ -423,7 +473,59 @@ audio.addEventListener("ended", () => {
 });
 
 
-// Перевод -------------------------------------------------------------
+// Настройки -------------------------------------------------------------
+
+const settings = document.querySelector(".settings");
+const settingIcon = document.querySelector(".setting-icon");
+const settingHeading = document.querySelectorAll(".set-text");
+const enIcon = document.querySelector(".en-lang");
+const ruIcon = document.querySelector(".ru-lang");
+const setcheckbox = document.querySelectorAll(".slider");
+const player = document.querySelector(".player");
+const weather = document.querySelector(".weather");
+const greetingBlock = document.querySelector('.greeting-container');
+const quotes = document.querySelector(".quotes");
+const visibleBlock = [time, day, weather, greetingBlock, quotes, player];
+
+const changeLanguage = (language) => {
+  if (!localStorage.getItem('city')) {
+    city.value = "Минск";
+  }
+  lang = language;
+  localStorage.setItem("lang", JSON.stringify(lang));
+  name.placeholder = lang.name;
+  getWeather();
+  getQuotes();
+  settingHeading.forEach((el, index) => {
+    el.textContent = lang.setting[index];
+  })
+}
+
+enIcon.addEventListener("click", () => {
+  changeLanguage(en);
+})
+
+ruIcon.addEventListener("click", () => {
+  changeLanguage(ru);
+})
+
+settingIcon.addEventListener("click", () => {
+  settings.classList.toggle("settings-active");
+  playListContainer.classList.remove("open-list");
+})
+
+setcheckbox.forEach((el, index) => {
+  el.addEventListener("click", () => {
+    visibleBlock[index].classList.toggle("block-hidden");
+  })
+})
+
+settingHeading.forEach((el, index) => {
+  el.textContent = lang.setting[index];
+})
+
+
+    
 
 
 

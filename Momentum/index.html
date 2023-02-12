@@ -7,6 +7,7 @@
   <link href="assets/favicon.ico" rel="shortcut icon">
   <link rel="stylesheet" href="./css/owfont-regular.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style768px.css">
   <title>Momentum</title>
 </head>
 <body>
@@ -68,18 +69,100 @@
     <date class="day"></date>
     <div class="greeting-container">
       <span class="greeting"></span>
-      <input type="text" class="name" placeholder="Введите своё имя">
+      <input type="text" class="name">
     </div>
   </main>
 
   <footer class="footer">
+      <div class="quotes">
     <button class="change-quote"></button>
     <div>
       <div class="quote"></div>
       <div class="author"></div>
     </div>
+</div>
+    <div class="settings">
+        <div class="general">
+            <div class="name-of-setting">
+                <div class="heading-general set-text">
+                    General
+                </div>
+                <div class="heading-description set-text">
+                    Customize your dashbord
+                </div>
+            </div>
+            
+            <div class="languages set-text">LANGUAGES</div>
+            <div class="language-container">
+                <div class="language-heading set-text">Language</div>
+                <div class="change-language">
+                    <div class="en-lang"></div>
+                    <div class="ru-lang"></div>
+                </div>
+            </div>
+            <div class="hide set-text">HIDE</div>
+            <div class="time-set setting-container">
+                <div class="setting-heading set-text">
+                    Time
+                </div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+            </div>
+            <div class="date setting-container">
+                <div class="setting-heading set-text">
+                    Date
+                </div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+            </div>
+            <div class="weather-set setting-container">
+                <div class="setting-heading set-text">
+                    Weather
+                </div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+            </div>
+            <div class="greetings setting-container">
+                <div class="setting-heading set-text">
+                    Gretings
+                </div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+            </div>
+            <div class="quotes setting-container">
+                <div class="setting-heading set-text">
+                    Quotes
+                </div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+            </div>
+            <div class="player setting-container">
+                <div class="setting-heading set-text">
+                    Player
+                </div>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                  </label>
+            </div>
+        </div>
+    </div>
+    <img src="./assets/img/settings (1).png" alt="setting-icon" class="setting-icon">
+    
   </footer>
+  
   <script src="./js/playList.js" type="module"></script>
   <script src="./js/index.js" type="module"></script>
 </body>
 </html>
+
