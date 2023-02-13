@@ -218,7 +218,7 @@ getWeather();
 const quote = document.querySelector(".quote");
 const author = document.querySelector(".author");
 const changeQuote = document.querySelector(".change-quote");
-let randomNumOfQuote = getRandomNum(0, 101);
+let randomNumOfQuote = getRandomNum(0, 19);
 
 async function getQuotes() {  
   let quotesUrl = lang.quotesUrl;
@@ -552,22 +552,3 @@ function showBlocks () {
 if (localStorage.getItem("arrOfCheckbox")) {
   showBlocks();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
