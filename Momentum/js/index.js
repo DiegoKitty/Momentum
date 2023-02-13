@@ -218,9 +218,10 @@ getWeather();
 const quote = document.querySelector(".quote");
 const author = document.querySelector(".author");
 const changeQuote = document.querySelector(".change-quote");
-let randomNumOfQuote = getRandomNum(0, 19);
+let randomNumOfQuote = getRandomNum(0, 53);
 
 async function getQuotes() {  
+  console.log(randomNumOfQuote)
   let quotesUrl = lang.quotesUrl;
   let quotes = quotesUrl;
   const res = await fetch(quotes);
@@ -230,7 +231,7 @@ async function getQuotes() {
 }
 
 changeQuote.addEventListener("click", () => {
-  randomNumOfQuote = getRandomNum(0, 101);
+  randomNumOfQuote = getRandomNum(0, 53);
   getQuotes();
 })
 
