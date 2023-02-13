@@ -590,7 +590,7 @@ input:checked + .slider:before {
 .setting-icon {
   position: absolute;
   left: 20px;
-  bottom: 10px;
+  bottom: 20px;
   height: 40px;
   width: 40px;
   cursor: pointer;
@@ -608,17 +608,22 @@ input:checked + .slider:before {
   right: 20px;
   bottom: 10px;
   display: flex;
-  /* justify-content: start; */
   align-items: center;
-  padding: 10px;
-  background-color: rgba(71, 62, 62, 0.5);
+  padding: 5px 10px;
+  /* background-color: rgba(101, 74, 74, 0.5); */
   border-radius: 15px;
 }
 
 .footer-item {
   font-size: 20px;
-  color: #4290d0;
+  color: #3e75c3;
   transition: 0.3s ease-in-out;
+}
+
+.logo-item {
+  padding: 0px 10px;
+  border-radius: 50%;
+  background-color: rgba(62,117,195,0.9);
 }
 
 .footer-item:not(:last-child) {
@@ -626,7 +631,7 @@ input:checked + .slider:before {
 }
 
 .rs-logo {
-  width: 70px;
+  width: 55px;
   height: 55px;
 }
 
