@@ -513,6 +513,13 @@ ruIcon.addEventListener("click", () => {
 })
 
 settingIcon.addEventListener("click", () => {
+  const dropdownList = document.querySelector(".dropdown-list");
+  const playerContainer = document.querySelector(".player-container");
+  const screenHeight = window.screen.height;
+  if (screenHeight < 920) {
+    playerContainer.classList.toggle("player-container--hidden");
+    dropdownList.classList.toggle("player-container--hidden");
+  }
   settings.classList.toggle("settings-active");
   playListContainer.classList.remove("open-list");
 })
