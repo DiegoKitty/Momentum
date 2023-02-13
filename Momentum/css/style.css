@@ -21,6 +21,12 @@ body::-webkit-scrollbar-thumb {
   padding: 0;
 }
 
+a {
+  list-style-type: none;
+  color: #fff;
+  text-decoration: none;
+}
+
 html { 
   visibility:hidden; 
 }
@@ -597,6 +603,33 @@ input:checked + .slider:before {
   transition: 0.3s ease-in-out;
 }
 
+.footer-list {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  display: flex;
+  /* justify-content: start; */
+  align-items: center;
+  padding: 10px;
+  background-color: rgba(71, 62, 62, 0.5);
+  border-radius: 15px;
+}
+
+.footer-item {
+  font-size: 20px;
+  color: #4290d0;
+  transition: 0.3s ease-in-out;
+}
+
+.footer-item:not(:last-child) {
+  margin-right: 25px;
+}
+
+.rs-logo {
+  width: 70px;
+  height: 55px;
+}
+
 
 
 @media (hover: hover) {
@@ -639,6 +672,11 @@ input:checked + .slider:before {
   
   .setting-icon:hover {
     transform: scale(1.2);
+    transition: 0.3s ease-in-out;
+  }
+
+  .footer-item:nth-child(odd):hover {
+    transform: scale(1.1);
     transition: 0.3s ease-in-out;
   }
 }
