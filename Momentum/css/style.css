@@ -832,7 +832,7 @@ input:checked + .slider:before {
   }
 
   .footer-list {
-    margin-top: 25;
+    margin-top: 25px;
     padding-bottom: 0;
   }
 }
