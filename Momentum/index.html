@@ -22,7 +22,6 @@
         <button class="play player-icon"></button>
         <button class="play-next player-icon"></button>
       </div>
-
       <div class="control">
         <div class="control-top">
           <div class="song-time"></div>
@@ -31,22 +30,16 @@
             </div>
             <div class="volume-button"></div>
           </div>
-      
-
-        <div class="timeline">
-          <div class="progress"></div>
+          <div class="timeline">
+            <div class="progress"></div>
+          </div>
+        </div>
+        <div class="list">
+          <ul class="play-list"></ul>
         </div>
       </div>
-
-      <div class="list">
-        <ul class="play-list"></ul>
-      </div>
-    </div>
-
       <div class="dropdown-list"></div>
     </div>
-    
-    
 
     <div class="weather">
       <input type="text" class="city">
@@ -60,104 +53,105 @@
       <div class="humidity"></div>
     </div>
   </header>
+  
   <main class="main">
     <div class="slider-icons">
       <button class="slide-prev slider-icon"></button>
       <button class="slide-next slider-icon"></button>
     </div>
-    <time class="time">0:00</time>
-    <date class="day"></date>
+    <time class="time" datetime="2023">0:00</time>
+    <div class="day"></div>
     <div class="greeting-container">
       <span class="greeting"></span>
       <input type="text" class="name">
     </div>
   </main>
-
+  
   <footer class="footer">
-      <div class="quotes">
-    <button class="change-quote"></button>
-    <div>
-      <div class="quote"></div>
-      <div class="author"></div>
+    <div class="quotes">
+      <button class="change-quote"></button>
+      <div>
+        <div class="quote"></div>
+        <div class="author"></div>
+      </div>
     </div>
-</div>
     <div class="settings">
-        <div class="general">
-            <div class="name-of-setting">
-                <div class="heading-general set-text">
-                    General
-                </div>
-                <div class="heading-description set-text">
-                    Customize your dashbord
-                </div>
-            </div>
-            
-            <div class="languages set-text">LANGUAGES</div>
-            <div class="language-container">
-                <div class="language-heading set-text">Language</div>
-                <div class="change-language">
-                    <div class="en-lang"></div>
-                    <div class="ru-lang"></div>
-                </div>
-            </div>
-            <div class="hide set-text">HIDE</div>
-            <div class="time-set setting-container">
-                <div class="setting-heading set-text">
-                    Time
-                </div>
-                <label class="switch">
-                    <input type="checkbox" class="checkbox" id="1">
-                    <span class="slider round"></span>
-                  </label>
-            </div>
-            <div class="date setting-container">
-                <div class="setting-heading set-text">
-                    Date
-                </div>
-                <label class="switch">
-                    <input type="checkbox" class="checkbox" id="2">
-                    <span class="slider round"></span>
-                  </label>
-            </div>
-            <div class="weather-set setting-container">
-                <div class="setting-heading set-text">
-                    Weather
-                </div>
-                <label class="switch">
-                    <input type="checkbox" class="checkbox" id="3">
-                    <span class="slider round"></span>
-                  </label>
-            </div>
-            <div class="greetings setting-container">
-                <div class="setting-heading set-text">
-                    Gretings
-                </div>
-                <label class="switch">
-                    <input type="checkbox" class="checkbox" id="4">
-                    <span class="slider round"></span>
-                  </label>
-            </div>
-            <div class="quotes setting-container">
-                <div class="setting-heading set-text">
-                    Quotes
-                </div>
-                <label class="switch">
-                    <input type="checkbox" class="checkbox" id="5">
-                    <span class="slider round"></span>
-                  </label>
-            </div>
-            <div class="player setting-container">
-                <div class="setting-heading set-text">
-                    Player
-                </div>
-                <label class="switch">
-                    <input type="checkbox" class="checkbox" id="6">
-                    <span class="slider round"></span>
-                  </label>
-            </div>
+      <div class="general">
+        <div class="name-of-setting">
+          <div class="heading-general set-text">
+            General
+          </div>
+          <div class="heading-description set-text">
+            Customize your dashbord
+          </div>
+        </div>    
+        <div class="languages set-text">LANGUAGES</div>
+        <div class="language-container">
+          <div class="language-heading set-text">Language</div>
+          <div class="change-language">
+            <div class="en-lang"></div>
+            <div class="ru-lang"></div>
+          </div>
         </div>
+        <div class="hide set-text">HIDE</div>
+        <div class="time-set setting-container">
+          <div class="setting-heading set-text">
+            Time
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="1">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="date setting-container">
+          <div class="setting-heading set-text">
+            Date
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="2">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="weather-set setting-container">
+          <div class="setting-heading set-text">
+            Weather
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="3">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="greetings setting-container">
+          <div class="setting-heading set-text">
+            Gretings
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="4">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="quotes setting-container">
+          <div class="setting-heading set-text">
+            Quotes
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="5">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="player setting-container">
+          <div class="setting-heading set-text">
+            Player
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="6">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
     </div>
     <img src="./assets/img/settings.png" alt="setting-icon" class="setting-icon">
+
     <div class="logo-container">
       <ul class="footer-list">
         <li class="footer-item logo-item">
@@ -172,13 +166,11 @@
           <a href="https://github.com/DiegoKitty" class="footer-link" target="_blank">
             <img src="./assets/img/gihub.png" class="gihub" alt="">
           </a>
-          </li>
+        </li>
       </ul>
     </div>
-    
   </footer>
-  
-  <script src="./js/playList.js" type="module"></script>
+
   <script src="./js/index.js" type="module"></script>
 </body>
 </html>
