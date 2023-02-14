@@ -17,15 +17,15 @@
       <div class="song-name"></div>
       <div class="author-name"></div>
       <div class="player-controls">
-        <button class="play-prev player-icon"></button>
-        <button class="play player-icon"></button>
-        <button class="play-next player-icon"></button>
+        <button class="play-prev player-icon" arie-label="play prev audio"></button>
+        <button class="play player-icon" arie-label="play audio"></button>
+        <button class="play-next player-icon" arie-label="play next audio"></button>
       </div>
       <div class="control">
         <div class="control-top">
           <div class="song-time"></div>
           <div class="volume-container">
-            <input type="range" class="volume-slider">
+            <input type="range" class="volume-slider" aria-label="volume regulation">
             </div>
             <div class="volume-button"></div>
           </div>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="weather">
-      <input type="text" class="city">
+      <input type="text" class="city" aria-label="City">
       <i class="weather-icon owf"></i>
       <div class="weather-error"></div>
       <div class="description-container">
@@ -55,8 +55,8 @@
   
   <main class="main">
     <div class="slider-icons">
-      <button class="slide-prev slider-icon"></button>
-      <button class="slide-next slider-icon"></button>
+      <button class="slide-prev slider-icon" arie-label="change background"></button>
+      <button class="slide-next slider-icon" arie-label="change background"></button>
     </div>
     <time class="time" datetime="2023">0:00</time>
     <div class="day"></div>
@@ -68,7 +68,7 @@
   
   <footer class="footer">
     <div class="quotes">
-      <button class="change-quote"></button>
+      <button class="change-quote" arie-label="change quote"></button>
       <div>
         <div class="quote"></div>
         <div class="author"></div>
@@ -98,7 +98,7 @@
             Time
           </div>
           <label class="switch">
-            <input type="checkbox" class="checkbox" id="1">
+            <input type="checkbox" class="checkbox" id="1" aria-label="hide time">
             <span class="slider round"></span>
           </label>
         </div>
@@ -107,7 +107,7 @@
             Date
           </div>
           <label class="switch">
-            <input type="checkbox" class="checkbox" id="2">
+            <input type="checkbox" class="checkbox" id="2" aria-label="hide date">
             <span class="slider round"></span>
           </label>
         </div>
@@ -116,7 +116,7 @@
             Weather
           </div>
           <label class="switch">
-            <input type="checkbox" class="checkbox" id="3">
+            <input type="checkbox" class="checkbox" id="3" aria-label="hide weather">
             <span class="slider round"></span>
           </label>
         </div>
@@ -125,7 +125,7 @@
             Gretings
           </div>
           <label class="switch">
-            <input type="checkbox" class="checkbox" id="4">
+            <input type="checkbox" class="checkbox" id="4" aria-label="hide greetings">
             <span class="slider round"></span>
           </label>
         </div>
@@ -134,7 +134,7 @@
             Quotes
           </div>
           <label class="switch">
-            <input type="checkbox" class="checkbox" id="5">
+            <input type="checkbox" class="checkbox" id="5" aria-label="hide quotes">
             <span class="slider round"></span>
           </label>
         </div>
@@ -143,7 +143,7 @@
             Player
           </div>
           <label class="switch">
-            <input type="checkbox" class="checkbox" id="6">
+            <input type="checkbox" class="checkbox" id="6" aria-label="hide player">
             <span class="slider round"></span>
           </label>
         </div>
@@ -154,7 +154,7 @@
     <div class="logo-container">
       <ul class="footer-list">
         <li class="footer-item logo-item">
-          <a href="https://rs.school/js/" class="footer-link" target="_blank">
+          <a href="https://rs.school/js/" class="footer-link" target="_blank" aria-label="rs-school course">
             <img src="./assets/svg/rs_school_js.svg" class="rs-logo" alt="logo">
           </a>
         </li>
@@ -162,7 +162,7 @@
           © 2023
         </li>
         <li class="footer-item github-item">
-          <a href="https://github.com/DiegoKitty" class="footer-link" target="_blank">
+          <a href="https://github.com/DiegoKitty" class="footer-link" target="_blank" aria-label="github account">
             <img src="./assets/img/gihub.png" class="gihub" alt="">
           </a>
         </li>

@@ -61,7 +61,6 @@ function getLocalStorage() {
 
   if(localStorage.getItem(`lang`)) {
     lang = JSON.parse(localStorage.getItem(`lang`))
-    console.log(lang)
   }
 }
 
@@ -221,7 +220,6 @@ const changeQuote = document.querySelector(".change-quote");
 let randomNumOfQuote = getRandomNum(0, 53);
 
 async function getQuotes() {  
-  console.log(randomNumOfQuote)
   let quotesUrl = lang.quotesUrl;
   let quotes = quotesUrl;
   const res = await fetch(quotes);
