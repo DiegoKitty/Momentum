@@ -260,7 +260,7 @@ const songName = document.querySelector(".song-name");
 const songTime = document.querySelector(".song-time");
 const authorName = document.querySelector(".author-name");
 
-// Генерация списка из песен ----------------------------------------------------
+// Генерация списка из песен 
 
 playList.forEach(el => {
   const li = document.createElement('li');
@@ -272,17 +272,11 @@ playList.forEach(el => {
 const audioPlayList = document.querySelectorAll(".play-item");
 
 audio.onloadedmetadata = function() {
-  // let volume = parseFloat((getComputedStyle(volumeLine).width))/ 10;
   songName.textContent = playList[playAudioNum].title;
   authorName.textContent = playList[playAudioNum].author;
-
-  // if(volumeSlider.classList.contains("volume-slider--active")) {
-  //   volume /= 10;
-  // }
-  // audio.volume = volume;
 };
 
-// Запуск песни -----------------------------------------------------------------
+// Запуск песни 
 
 function playAudio() {
   audioPlayList.forEach(audio => {
@@ -476,16 +470,19 @@ audio.addEventListener("ended", () => {
 
 // Настройки -------------------------------------------------------------
 
+const main = document.querySelector(".main");
+const player = document.querySelector(".player");
+const playerContainer = document.querySelector(".player-container");
+const dropdownList = document.querySelector(".dropdown-list");
+const weather = document.querySelector(".weather");
+const greetingBlock = document.querySelector('.greeting-container');
+const quotes = document.querySelector(".quotes");
 const settings = document.querySelector(".settings");
 const settingIcon = document.querySelector(".setting-icon");
 const settingHeading = document.querySelectorAll(".set-text");
 const enIcon = document.querySelector(".en-lang");
 const ruIcon = document.querySelector(".ru-lang");
 const setcheckbox = document.querySelectorAll(".checkbox");
-const player = document.querySelector(".player");
-const weather = document.querySelector(".weather");
-const greetingBlock = document.querySelector('.greeting-container');
-const quotes = document.querySelector(".quotes");
 const visibleBlock = [time, day, weather, greetingBlock, quotes, player];
 
 // Смена языка
@@ -513,13 +510,19 @@ ruIcon.addEventListener("click", () => {
 })
 
 settingIcon.addEventListener("click", () => {
-  const dropdownList = document.querySelector(".dropdown-list");
-  const playerContainer = document.querySelector(".player-container");
-  const screenHeight = window.screen.height;
-  if (screenHeight < 920) {
-    playerContainer.classList.toggle("player-container--hidden");
-    dropdownList.classList.toggle("player-container--hidden");
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  if (screenHeight < 910) {
+    playerContainer.classList.toggle("active--hidden");
+    dropdownList.classList.toggle("active--hidden");
   }
+
+  if (screenWidth < 1020) {
+    main.classList.toggle("active--hidden");
+    quotes.classList.toggle("active--hidden");
+  }
+
   settings.classList.toggle("settings-active");
   playListContainer.classList.remove("open-list");
 })
@@ -530,7 +533,7 @@ settingHeading.forEach((el, index) => {
 
 setcheckbox.forEach((el, index) => {
   el.addEventListener("click", () => {
-    saveCheckbox()
+    saveCheckbox();
     visibleBlock[index].classList.toggle("block-hidden");
   })
 })

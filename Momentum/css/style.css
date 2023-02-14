@@ -6,6 +6,7 @@
 body::-webkit-scrollbar {
   width: 12px;               /* ширина scrollbar */
 }
+
 body::-webkit-scrollbar-track {
   border-radius: 20px;
   background: rgb(244, 241, 240);        /* цвет дорожки */
@@ -186,7 +187,7 @@ ul {
   transition: 0.3s ease-in-out;
 }
 
-.player-container--hidden {
+.active--hidden {
   opacity: 0;
   visibility: hidden;
   transition: 0.3s ease-in-out;
@@ -772,7 +773,7 @@ input:checked + .slider:before {
   }
 }
 
-@media (max-height: 768px), (max-width: 550px)  {
+@media (max-height: 650px), (max-width: 550px)  {
 
   .header {
     min-height: 180px;
@@ -823,7 +824,7 @@ input:checked + .slider:before {
   }
 
   .settings {
-    bottom: 60px;
+    bottom: 70px;
   }
 
   .setting-container {
