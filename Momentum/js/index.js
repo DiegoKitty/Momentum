@@ -24,7 +24,7 @@ const en = {
   day: "en-US",
   time: "en-US",
   quotesUrl: './json/quotesEN.json',
-  setting: ["General", "Customize your dashbord", "LANGUAGES", "Language", "HIDE", "Time", "Date", "Weather", "Gretings", "Quotes", "Player"]
+  setting: ["General", "Customize your dashbord", "Images", "Choose background", "LANGUAGE", "Language", "HIDE", "Time", "Date", "Weather", "Gretings", "Quotes", "Player", "BACKGROUND IMAGE", "GitHub", "Unsplash", "Flicker"]
 }
 
 const ru = {
@@ -41,46 +41,39 @@ const ru = {
   day: "ru-RU",
   time: "ru-RU",
   quotesUrl: './json/quotesRU.json',
-  setting: ["Основные", "Настройте приложение", "ВЫБРАТЬ ЯЗЫК", "Язык", "СКРЫТЬ", "Часы", "Дата", "Погода", "Приветствие", "Цитаты", "Аудиоплеер"]
+  setting: ["Основные", "Настройте приложение", "Images", "Выберите фон", "ВЫБРАТЬ ЯЗЫК", "Язык", "СКРЫТЬ", "Часы", "Дата", "Погода", "Приветствие", "Цитаты", "Аудиоплеер", "ФОНОВОЕ ИЗОБРАЖЕНИЕ", "GitHub", "Unsplash", "Flicker"]
 }
 
 const name = document.querySelector(".name");
-const time = document.querySelector(".time");
 const day = document.querySelector(".day");
+const time = document.querySelector(".time");
 const greeting = document.querySelector(".greeting");
-
 let lang;
+
 if(!localStorage.getItem(`lang`)) {
   lang = en;
 }
 
-function getLocalStorage() {
-  if(localStorage.getItem(`name`)) {
-    name.value = localStorage.getItem(`name`);
-  }
-
-  if(localStorage.getItem(`lang`)) {
-    lang = JSON.parse(localStorage.getItem(`lang`))
-  }
+if(localStorage.getItem(`lang`)) {
+  lang = JSON.parse(localStorage.getItem(`lang`));
 }
-
-getLocalStorage();
 
 // Часы и календарь
 
 const options = {weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC'};
 const showDay = () => {
-    const date = new Date();
-    const currentDay = date.toLocaleDateString(`${lang.day}`, options);
-    day.textContent = currentDay;
+  const date = new Date();
+  const currentDay = date.toLocaleDateString(`${lang.day}`, options);
+  day.textContent = currentDay;
 }
 
 const showTime = () => {
-    const date = new Date();
-    const currentTime = date.toLocaleTimeString(lang.time);
-    time.textContent = currentTime;
-    showDay()
-    setTimeout(showTime, 1000);
+  const time = document.querySelector(".time");
+  const date = new Date();
+  const currentTime = date.toLocaleTimeString(lang.time);
+  time.textContent = currentTime;
+  showDay()
+  setTimeout(showTime, 1000);
 }
 
 showTime();
@@ -142,24 +135,37 @@ const setBg = () => {
 }
 
 let randomNum = getRandomNum(1, 20);
-setBg();
 
 // Менять фон при клике на слайдер ------------------------------------------------
 
+
 const getSlideNext = () => {
-  randomNum += 1;
+  const isUnsplashChecked = document.getElementById("8").checked;
+  const isFlickerchecked = document.getElementById("9").checked;
+  if(isUnsplashChecked) getBgFromUnsplash();
+  else if (isFlickerchecked) getBgFromFlickr();
+  else {
+    randomNum += 1;
   if (randomNum === 21) {
     randomNum = 1;
   }
   setBg();
+  }
 }
 
 const getSlidePrev = () => {
-  randomNum -= 1;
+  const isUnsplashChecked = document.getElementById("8").checked;
+  const isFlickerchecked = document.getElementById("9").checked;
+  if(isUnsplashChecked) getBgFromUnsplash();
+  else if (isFlickerchecked) getBgFromFlickr();
+  else {
+    randomNum -= 1;
   if (randomNum === 0) {
     randomNum = 20;
   }
   setBg();
+  }
+  
 }
 
 slideNext.addEventListener('click', getSlideNext);
@@ -173,6 +179,8 @@ const city = document.querySelector(".city");
 
 if (localStorage.getItem('city')) {
   city.value = localStorage.getItem('city');
+} else if (localStorage.getItem("lang")) {
+  city.value = lang.city;
 } else {
   city.value = "Minsk"
 }
@@ -412,16 +420,16 @@ openList.addEventListener("click", () => {
 })
 
 volumeBtn.addEventListener("click", () => {
-  volumeBtn.classList.toggle("volume-button--mute")
+  volumeBtn.classList.toggle("volume-button--mute");
   audio.muted = !audio.muted;
 })
 
 volumeBtn.addEventListener("mousemove", () => {
-  volumeSlider.classList.add("volume-slider--active")
+  volumeSlider.classList.add("volume-slider--active");
 })
 
 volumeBtn.addEventListener("mouseleave", () => {
-  volumeSlider.classList.remove("volume-slider--active")
+  volumeSlider.classList.remove("volume-slider--active");
 })
 
  // Обновление текущей секунды аудио
@@ -437,7 +445,7 @@ timeline.addEventListener("click", e => {
   const timelineWidth = getComputedStyle(timeline).width;
   const timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
   audio.currentTime = timeToSeek;
-});
+})
 
 setInterval(() => {
   const progressBar = document.querySelector(".progress");
@@ -461,9 +469,9 @@ audio.addEventListener("ended", () => {
     playAudioNum = 0;
   }
   audioPlayList[playAudioNum].classList.add("pause");
-  audio.src = playList[playAudioNum].src
+  audio.src = playList[playAudioNum].src;
   playAudio();
-});
+})
 
 
 // Настройки -------------------------------------------------------------
@@ -476,18 +484,44 @@ const weather = document.querySelector(".weather");
 const greetingBlock = document.querySelector('.greeting-container');
 const quotes = document.querySelector(".quotes");
 const settings = document.querySelector(".settings");
+const generalSetting = document.querySelector(".general-setting")
+const imagesSetting = document.querySelector(".images-setting")
+const settingGeneralContainer = document.querySelector(".setting-general-container");
+const settingImagesContainer = document.querySelector(".setting-images-container");
 const settingIcon = document.querySelector(".setting-icon");
 const settingHeading = document.querySelectorAll(".set-text");
 const enIcon = document.querySelector(".en-lang");
 const ruIcon = document.querySelector(".ru-lang");
 const setcheckbox = document.querySelectorAll(".checkbox");
+const setcheckboxImage = document.querySelectorAll(".checkbox-image");
+const gitHubCheckbox = document.getElementById("7")
 const visibleBlock = [time, day, weather, greetingBlock, quotes, player];
+
+
+if (!localStorage.getItem("arrOfImageCheckbox")) {
+  gitHubCheckbox.checked = true;
+  setBg();
+}
+
+generalSetting.addEventListener("click", () => {
+  imagesSetting.classList.remove("settings-name-active")
+  settingGeneralContainer.classList.remove("container-unactive");
+  settingImagesContainer.classList.add("container-unactive");
+  generalSetting.classList.add("settings-name-active")
+})
+
+imagesSetting.addEventListener("click", () => {
+  generalSetting.classList.remove("settings-name-active")
+  settingImagesContainer.classList.remove("container-unactive");
+  settingGeneralContainer.classList.add("container-unactive");
+  imagesSetting.classList.add("settings-name-active")
+})
 
 // Смена языка
 
-const changeLanguage = (language) => {
+const changeLanguage = (language, town) => {
   if (!localStorage.getItem('city')) {
-    city.value = "Минск";
+    city.value = town;
   }
   lang = language;
   localStorage.setItem("lang", JSON.stringify(lang));
@@ -500,12 +534,120 @@ const changeLanguage = (language) => {
 }
 
 enIcon.addEventListener("click", () => {
-  changeLanguage(en);
+  changeLanguage(en, "Minsk");
 })
 
 ruIcon.addEventListener("click", () => {
-  changeLanguage(ru);
+  changeLanguage(ru, "Минск");
 })
+
+settingHeading.forEach((el, index) => {
+  el.textContent = lang.setting[index];
+})
+
+// Сохранение положения чекбокса
+
+function saveCheckbox (name, checkbox) {
+  let arrOfCheckbox = []
+  checkbox.forEach(input => {
+    arrOfCheckbox.push({ id: input.id, checked: input.checked });
+  })
+  localStorage.setItem(`${name}`, JSON.stringify(arrOfCheckbox));
+}
+
+setcheckbox.forEach((el, index) => {
+  el.addEventListener("click", () => {
+    saveCheckbox('arrOfHiddenCheckbox', setcheckbox);
+    visibleBlock[index].classList.toggle("block-hidden");
+  });
+})
+
+// Фоновое изображение из разных источников 
+
+async function getBgFromUnsplash() {
+  const greeting = showGreeting().toLowerCase();
+  const url = `https://api.unsplash.com/photos/random?query=${greeting}&client_id=7NzVZIHObJdTUnh304FuaJ5RlfUpUgq_HlqFrd9OjFU`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const img = new Image();
+  img.src = `${data.urls.regular}`
+  localStorage.setItem("apiSrc", JSON.stringify(img.src));
+   img.onload = () => {      
+         document.body.style.backgroundImage = `url(${data.urls.regular})`
+       }; 
+ }
+
+ async function getBgFromFlickr() {
+  const randomNum = getRandomNum(0, 99);
+  const greeting = showGreeting().toLowerCase();
+  let url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=86957cc7622c95021b690c2ac91edef8&tags=nature&extras=url_l&format=json&nojsoncallback=1`;
+  const res = await fetch(url);
+  const data = await res.json();
+  url = data.photos.photo[randomNum].url_l;
+  const img = new Image();
+  img.src = url;
+  localStorage.setItem("apiSrc", JSON.stringify(img.src));
+   img.onload = () => {      
+         document.body.style.backgroundImage = `url(${img.src})`
+       }; 
+ }
+
+
+setcheckboxImage.forEach((el, index) => {
+  el.addEventListener("click", (e) => {
+    if(index === 1) getBgFromUnsplash();
+    else if (index === 2) getBgFromFlickr();
+    else {
+      setBg();
+    }
+
+    setcheckboxImage.forEach(el => {
+      el.checked = false;
+      e.target.checked = true;
+    })
+    saveCheckbox('arrOfImageCheckbox', setcheckboxImage);
+  });
+})
+
+
+
+// Скрытие блоков
+
+function showBlocks () {
+  const arrOfCheckbox = JSON.parse(localStorage.getItem('arrOfHiddenCheckbox'));
+  arrOfCheckbox.forEach(input => {
+    document.getElementById(input.id).checked = input.checked;
+  })
+
+  setcheckbox.forEach ((input, index) => {
+    if(input.checked) {
+      visibleBlock[index].classList.add("block-hidden");
+    }
+  })
+}
+
+if (localStorage.getItem("arrOfHiddenCheckbox")) {
+  showBlocks();
+}
+
+if (localStorage.getItem("arrOfImageCheckbox")) {
+  const arrOfCheckbox = JSON.parse(localStorage.getItem('arrOfImageCheckbox'));
+  arrOfCheckbox.forEach(input => {
+    document.getElementById(input.id).checked = input.checked;
+  })
+}
+
+const isUnsplashchecked = document.getElementById(8).checked;
+const isFlickerchecked = document.getElementById(9).checked;
+
+if (isUnsplashchecked || isFlickerchecked) {
+  const url = JSON.parse(localStorage.getItem('apiSrc'));
+  document.body.style.backgroundImage = `url(${url})`
+} else {
+  setBg();
+}
+
+// Адаптив
 
 settingIcon.addEventListener("click", () => {
   const screenWidth = window.innerWidth;
@@ -525,39 +667,16 @@ settingIcon.addEventListener("click", () => {
   playListContainer.classList.remove("open-list");
 })
 
-settingHeading.forEach((el, index) => {
-  el.textContent = lang.setting[index];
-})
 
-setcheckbox.forEach((el, index) => {
-  el.addEventListener("click", () => {
-    saveCheckbox();
-    visibleBlock[index].classList.toggle("block-hidden");
-  })
-})
 
-// Сохранение положения чекбокса
+// Получение данных из LocalStorage
 
-function saveCheckbox () {
-  let arrOfCheckbox = []
-  setcheckbox.forEach(input => {
-    arrOfCheckbox.push({ id: input.id, checked: input.checked });
-  })
-  localStorage.setItem('arrOfCheckbox', JSON.stringify(arrOfCheckbox));
-}
-
-function showBlocks () {
-  const arrOfCheckbox = JSON.parse(localStorage.getItem('arrOfCheckbox'));
-  arrOfCheckbox.forEach(input => {
-    document.getElementById(input.id).checked = input.checked;
-  })
-  setcheckbox.forEach ((input, index) => {
-    if(input.checked) {
-      visibleBlock[index].classList.add("block-hidden");
+function getLocalStorage() {
+  if(localStorage.getItem(`name`)) {
+    name.value = localStorage.getItem(`name`);
   }
-})
 }
 
-if (localStorage.getItem("arrOfCheckbox")) {
-  showBlocks();
-}
+window.addEventListener('load', getLocalStorage)
+
+// getLocalStorage();

@@ -45,10 +45,7 @@ body {
   color: #fff;
   text-align: center;
   background-blend-mode: multiply;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background: rgba(0, 0, 0, 0.75);
+  background: center/cover,rgba(0,0,0,.5);
   transition: background-image 0.5s linear;
 }
 
@@ -472,6 +469,7 @@ ul {
   left: 20px;
   padding: 25px;
   width: 400px;
+  max-height: 495px;
   border-radius: 15px;
   font-size: 18px;
   background-color: rgb(46, 38, 38);
@@ -479,6 +477,11 @@ ul {
   visibility: hidden;
   transition: 0.3s ease-in-out;
   z-index: 15;
+}
+
+.setting-general-container,
+.setting-images-container {
+  height: 420px;
 }
 
 .settings-active {
@@ -489,16 +492,55 @@ ul {
 }
 
 .name-of-setting {
-  width: 200px;
-  border-right: 1px solid rgb(205, 192, 192);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
 
-.heading-general {
+.general-setting,
+.images-setting {
+  transition: 0.3s ease-in-out;
+  color: aqua;
+}
+
+.general-setting.settings-active {
+  color: rgb(222, 130, 26);
+  transition: 0.3s ease-in-out;
+}
+
+.settings-name-active {
+  color: rgb(222, 130, 26);
+  transition: 0.3s ease-in-out;
+}
+
+.setting-images-container.container-unactive {
+  display: none;
+}
+
+.container-unactive {
+  display: none;
+}
+
+.heading-general,
+.heading-images {
   text-align: left;
   font-size: 25px;
   font-weight: 700;
+}
+
+.setting-border {
+  position: absolute; 
+  left:55%;
+  right:0;
+  top:0;
+  bottom:0;
+  width: 2px;
+  background-color: rgb(241, 237, 235);
 }
 
 .heading-description {
@@ -508,6 +550,7 @@ ul {
 }
 
 .languages,
+.image,
 .hide {
   margin-top: 17px;
 }
@@ -546,7 +589,7 @@ ul {
   background-image: url(../assets/img/russia.png);
 }
 
-.setting-container {
+.options-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -561,7 +604,9 @@ ul {
   height: 20px;
 }
 
-.switch input {display:none;}
+.switch input {
+  display:none;
+}
 
 .slider {
   position: absolute;
@@ -632,7 +677,6 @@ input:checked + .slider:before {
   display: flex;
   align-items: center;
   padding: 5px 10px;
-  /* background-color: rgba(101, 74, 74, 0.5); */
   border-radius: 15px;
 }
 
@@ -684,11 +728,6 @@ input:checked + .slider:before {
     width: 100px;
     opacity: 1;
     transition: 0.3s ease-in-out; 
-  }
-  
-  .name-of-setting:hover {
-    color: #C5B358;
-    transition: 0.3s ease-in-out;
   }
   
   .en-lang:hover,
@@ -745,6 +784,11 @@ input:checked + .slider:before {
 
   .heading-description {
     display: none;
+  }
+
+  .setting-general-container,
+  .setting-images-container {
+    height: 370px;
   }
 
   .rs-logo {
@@ -826,8 +870,13 @@ input:checked + .slider:before {
   .settings {
     bottom: 70px;
   }
+  
+  .setting-general-container,
+  .setting-images-container {
+    height: 340px;
+  }
 
-  .setting-container {
+  .options-container {
     padding: 7px 0px;
   }
 
@@ -843,9 +892,21 @@ input:checked + .slider:before {
   }
 }
 
+@media (max-height: 768px) {
+
+  .footer {
+    height: 25vh;
+  }
+}
+
 @media (max-height: 560px) {
   .quotes {
     display: none;
+  }
+
+  .setting-general-container,
+  .setting-images-container {
+    height: 300px;
   }
 }
 

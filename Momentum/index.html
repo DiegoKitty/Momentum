@@ -74,103 +74,145 @@
         <div class="author"></div>
       </div>
     </div>
+
     <div class="settings">
-      <div class="general">
-        <div class="name-of-setting">
-          <div class="heading-general set-text">
-            General
+
+      <div class="name-of-setting">
+          <div class="general-setting settings-name-active">
+            <div class="heading-general set-text">
+            </div>
+            <div class="heading-description set-text">
+            </div>
           </div>
-          <div class="heading-description set-text">
-            Customize your dashbord
+          <div class="setting-border"></div>
+            <div class="heading-images set-text">              
+            </div>
+            <div class="heading-description set-text">
+            </div>
           </div>
         </div>    
-        <div class="languages set-text">LANGUAGES</div>
-        <div class="language-container">
-          <div class="language-heading set-text">Language</div>
-          <div class="change-language">
-            <div class="en-lang"></div>
-            <div class="ru-lang"></div>
+
+        <div class="setting-general-container">
+          <div class="languages set-text">LANGUAGES</div>
+          <div class="language-container">
+            <div class="language-heading set-text">Language</div>
+            <div class="change-language">
+              <div class="en-lang"></div>
+              <div class="ru-lang"></div>
+            </div>
+          </div>
+          <div class="hide set-text">HIDE</div>
+          <div class="time-set options-container">
+            <div class="options-heading set-text">
+              Time
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="checkbox" id="1" aria-label="hide time">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="date options-container">
+            <div class="options-heading set-text">
+              Date
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="checkbox" id="2" aria-label="hide date">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="weather-set options-container">
+            <div class="options-heading set-text">
+              Weather
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="checkbox" id="3" aria-label="hide weather">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="greetings options-container">
+            <div class="options-heading set-text">
+              Gretings
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="checkbox" id="4" aria-label="hide greetings">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="quotes options-container">
+            <div class="options-heading set-text">
+              Quotes
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="checkbox" id="5" aria-label="hide quotes">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <div class="player options-container">
+            <div class="options-heading set-text">
+              Player
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="checkbox" id="6" aria-label="hide player">
+              <span class="slider round"></span>
+            </label>
           </div>
         </div>
-        <div class="hide set-text">HIDE</div>
-        <div class="time-set setting-container">
-          <div class="setting-heading set-text">
-            Time
+        
+        <div class="setting-images-container container-unactive">
+          <div class="image set-text">BACKGROUND IMAGE</div>
+          <div class="github options-container">
+            <div class="options-heading set-text">
+              GitHub
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="checkbox-image" id="7" aria-label="image from github">
+              <span class="slider round"></span>
+            </label>
           </div>
-          <label class="switch">
-            <input type="checkbox" class="checkbox" id="1" aria-label="hide time">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="date setting-container">
-          <div class="setting-heading set-text">
-            Date
+
+          <div class="flicker options-container">
+            <div class="options-heading set-text">
+              Unsplash
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="checkbox-image" id="8" aria-label="image from unsplash">
+              <span class="slider round"></span>
+            </label>
           </div>
-          <label class="switch">
-            <input type="checkbox" class="checkbox" id="2" aria-label="hide date">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="weather-set setting-container">
-          <div class="setting-heading set-text">
-            Weather
+
+          <div class="unsplash options-container">
+            <div class="options-heading set-text">
+              Flicker
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="checkbox-image" id="9" aria-label="image from flicker">
+              <span class="slider round"></span>
+            </label>
           </div>
-          <label class="switch">
-            <input type="checkbox" class="checkbox" id="3" aria-label="hide weather">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="greetings setting-container">
-          <div class="setting-heading set-text">
-            Gretings
-          </div>
-          <label class="switch">
-            <input type="checkbox" class="checkbox" id="4" aria-label="hide greetings">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="quotes setting-container">
-          <div class="setting-heading set-text">
-            Quotes
-          </div>
-          <label class="switch">
-            <input type="checkbox" class="checkbox" id="5" aria-label="hide quotes">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="player setting-container">
-          <div class="setting-heading set-text">
-            Player
-          </div>
-          <label class="switch">
-            <input type="checkbox" class="checkbox" id="6" aria-label="hide player">
-            <span class="slider round"></span>
-          </label>
         </div>
       </div>
-    </div>
-    <img src="./assets/img/settings.png" alt="setting-icon" class="setting-icon">
 
-    <div class="logo-container">
-      <ul class="footer-list">
-        <li class="footer-item logo-item">
-          <a href="https://rs.school/js/" class="footer-link" target="_blank" aria-label="rs-school course">
-            <img src="./assets/svg/rs_school_js.svg" class="rs-logo" alt="logo">
-          </a>
-        </li>
-        <li class="footer-item date-item">
-          © 2023
-        </li>
-        <li class="footer-item github-item">
-          <a href="https://github.com/DiegoKitty" class="footer-link" target="_blank" aria-label="github account">
-            <img src="./assets/img/gihub.png" class="gihub" alt="">
-          </a>
-        </li>
-      </ul>
-    </div>
-  </footer>
-
+      <img src="./assets/img/settings.png" alt="setting-icon" class="setting-icon">
+      
+      <div class="logo-container">
+        <ul class="footer-list">
+          <li class="footer-item logo-item">
+            <a href="https://rs.school/js/" class="footer-link" target="_blank" aria-label="rs-school course">
+              <img src="./assets/svg/rs_school_js.svg" class="rs-logo" alt="logo">
+            </a>
+          </li>
+          <li class="footer-item date-item">
+            © 2023
+          </li>
+          <li class="footer-item github-item">
+            <a href="https://github.com/DiegoKitty" class="footer-link" target="_blank" aria-label="github account">
+              <img src="./assets/img/gihub.png" class="gihub" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
   <script src="./js/index.js" type="module"></script>
-</body>
+  </body>
 </html>
 
