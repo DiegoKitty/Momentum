@@ -895,7 +895,8 @@ input:checked + .slider:before {
 @media (max-height: 768px) {
 
   .footer {
-    height: 25vh;
+    position: absolute;
+    bottom: 0;
   }
 }
 

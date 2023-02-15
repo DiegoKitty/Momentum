@@ -497,6 +497,8 @@ const setcheckboxImage = document.querySelectorAll(".checkbox-image");
 const gitHubCheckbox = document.getElementById("7")
 const visibleBlock = [time, day, weather, greetingBlock, quotes, player];
 
+console.log(imagesSetting)
+
 
 if (!localStorage.getItem("arrOfImageCheckbox")) {
   gitHubCheckbox.checked = true;
