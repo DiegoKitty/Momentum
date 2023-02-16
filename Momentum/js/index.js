@@ -17,7 +17,7 @@ export {lang}
 
 showTime();
 showGreeting ();
-setCityName()
+setCityName();
 getWeather();
 getQuotes();
 

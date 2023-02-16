@@ -523,7 +523,7 @@ ul {
 }
 
 .container-unactive {
-  display: none;
+  /* display: none; */
 }
 
 .heading-general,

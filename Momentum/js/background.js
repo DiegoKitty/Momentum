@@ -123,17 +123,25 @@ const changeBg = () => {
 }
 
 const getSlideNext = () => {
-  if (changeBg()) randomNum += 1;
-  if (randomNum === 21) randomNum = 1;
+  if (changeBg()) {
+    randomNum += 1;
+  if (randomNum === 21) {
+    randomNum = 1;
+  }
   setBg();
   }
+}
 
 const getSlidePrev = () => {
   changeBg();
-  if (changeBg()) randomNum -= 1;
-  if (randomNum === 0) randomNum = 20;
+  if (changeBg()){
+    randomNum -= 1;
+  if (randomNum === 0) {
+    randomNum = 20;
+  }
   setBg();
   }
+}
 
 slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
@@ -147,6 +155,6 @@ const isFlickerchecked = document.getElementById(9).checked;
     const url = JSON.parse(localStorage.getItem('apiSrc'));
     document.body.style.backgroundImage = `url(${url})`
   } else {
-    setBg();
+    setBg();  // иначе установить фон из гитхаба
   }
 
