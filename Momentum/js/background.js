@@ -123,25 +123,17 @@ const changeBg = () => {
 }
 
 const getSlideNext = () => {
-  if (changeBg()){
-    randomNum += 1;
-  if (randomNum === 21) {
-    randomNum = 1;
-  }
+  if (changeBg()) randomNum += 1;
+  if (randomNum === 21) randomNum = 1;
   setBg();
   }
-}
 
 const getSlidePrev = () => {
   changeBg();
-  if (changeBg()){
-    randomNum -= 1;
-  if (randomNum === 0) {
-    randomNum = 20;
-  }
+  if (changeBg()) randomNum -= 1;
+  if (randomNum === 0) randomNum = 20;
   setBg();
   }
-}
 
 slideNext.addEventListener('click', getSlideNext);
 slidePrev.addEventListener('click', getSlidePrev);
