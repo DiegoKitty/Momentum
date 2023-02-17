@@ -13,6 +13,7 @@ if(!localStorage.getItem(`lang`)) {
 } else {
   lang = JSON.parse(localStorage.getItem(`lang`));
 }
+
 export {lang}
 
 showTime();
@@ -41,7 +42,10 @@ const settingHeading = document.querySelectorAll(".set-text");
 const enIcon = document.querySelector(".en-lang");
 const ruIcon = document.querySelector(".ru-lang");
 const setcheckbox = document.querySelectorAll(".checkbox");
+const imageTag = document.querySelector(".image-tag");
 const visibleBlock = [time, day, weather, greetingBlock, quotes, player];
+
+imageTag.placeholder = lang.tag;
 
 generalSetting.addEventListener("click", () => {
   imagesSetting.classList.remove("settings-name-active")
@@ -68,6 +72,7 @@ const changeLanguage = (language, town) => {
   lang = language;
   localStorage.setItem("lang", JSON.stringify(lang));
   name.placeholder = lang.name;
+  imageTag.placeholder = lang.tag;
   getQuotes();
   getWeather();
 
@@ -150,4 +155,3 @@ window.addEventListener('load', function () {
   document.getElementsByTagName("html")[0].style.visibility = "visible";
 });
 
-// getLocalStorage();

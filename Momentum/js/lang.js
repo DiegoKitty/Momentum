@@ -12,7 +12,9 @@ const en = {
     day: "en-US",
     time: "en-US",
     quotesUrl: './json/quotesEN.json',
-    setting: ["General", "Customize your dashbord", "Images", "Choose background", "LANGUAGE", "Language", "HIDE", "Time", "Date", "Weather", "Gretings", "Quotes", "Player", "BACKGROUND IMAGE", "GitHub", "Unsplash", "Flickr"]
+    setting: ["General", "Customize your dashbord", "Images", "Choose background", "LANGUAGE", "Language", "HIDE", "Time", "Date", "Weather", "Gretings", "Quotes", "Player", "BACKGROUND IMAGE", "GitHub", "Unsplash", "Flickr"],
+    tag: "Write keyword to search image",
+    tagAlert: "There are no images for your request. Enter another tag.",
   }
   
   const ru = {
@@ -29,7 +31,9 @@ const en = {
     day: "ru-RU",
     time: "ru-RU",
     quotesUrl: './json/quotesRU.json',
-    setting: ["Основные", "Настройте приложение", "Обои", "Выберите источник", "ВЫБРАТЬ ЯЗЫК", "Язык", "СКРЫТЬ", "Часы", "Дата", "Погода", "Приветствие", "Цитаты", "Аудиоплеер", "ФОНОВОЕ ИЗОБРАЖЕНИЕ", "GitHub", "Unsplash", "Flickr"]
+    setting: ["Основные", "Настройте приложение", "Обои", "Выберите источник", "ВЫБРАТЬ ЯЗЫК", "Язык", "СКРЫТЬ", "Часы", "Дата", "Погода", "Приветствие", "Цитаты", "Аудиоплеер", "ФОНОВОЕ ИЗОБРАЖЕНИЕ", "GitHub", "Unsplash", "Flickr"],
+    tag: "Введите тэг для поиска",
+    tagAlert: "По Вашему запросу нет изображений. Введите другой тэг."
   }
   
   export {en, ru}

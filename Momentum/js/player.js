@@ -161,9 +161,8 @@ audioPlayList.forEach((el, index) => {
   })
 })
 
-
 // Продвинутый плеер -------------------------------------------------------------
-
+const settings = document.querySelector(".settings");
 const openList = document.querySelector(".dropdown-list");
 
 openList.addEventListener("click", () => {
