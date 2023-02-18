@@ -7,10 +7,12 @@ import  "./background.js";
 import  "./player.js";
 import  "./links.js";
 
+// localStorage.clear()
+
 let lang;
 
 if(!localStorage.getItem("lang")) {
-  lang = en;
+  lang = ru;
 } else {
   lang = JSON.parse(localStorage.getItem("lang"));
 }

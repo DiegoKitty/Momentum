@@ -13,7 +13,7 @@ const setCityName = () => {
   } else if (localStorage.getItem("lang")) {
     city.value = lang.city;
   } else {
-    city.value = "Minsk"
+    city.value = "Минск"
   }
 }
 
