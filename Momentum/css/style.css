@@ -787,6 +787,10 @@ ul {
   margin-top: 17px;
 }
 
+.image {
+  margin-bottom: 10px;
+}
+
 .language-container {
   display: flex;
   justify-content: space-between;
@@ -1084,7 +1088,7 @@ input:checked + .slider:before {
 
   .setting-general-container,
   .setting-images-container {
-    height: 370px;
+    height: 400px;
   }
 
   .setting-border {
@@ -1165,8 +1169,18 @@ input:checked + .slider:before {
 @media (max-width: 550px)  {
   .player,
   .footer-list,
+  .greetings,
   .greeting-container {
     display: none;
+  }
+
+  .main {
+    height: 30vh;
+    min-height: 200px;
+  }
+
+  .slider-icon {
+    top: 100%;
   }
 
   .footer {
@@ -1176,9 +1190,9 @@ input:checked + .slider:before {
 }
 
 @media (max-height: 920px) {
-  .slider-icon {
+  /* .slider-icon {
     top: 75%;
-  }
+  } */
 }
 
 @media (max-height: 768px) {
@@ -1193,6 +1207,12 @@ input:checked + .slider:before {
 
   .quotes {
     display: none;
+  }
+}
+
+@media (max-height: 900px) and (max-width: 550px)  {
+  .footer {
+    height: 25vh;
   }
 }
 
@@ -1220,10 +1240,6 @@ input:checked + .slider:before {
     width: 24px;
     height: 24px;
     background-size: 24px 24px;
-}
-
-  .slider-icon {
-    top: 85%;
   }
 
   .footer {
@@ -1238,7 +1254,7 @@ input:checked + .slider:before {
   
   .setting-general-container,
   .setting-images-container {
-    height: 360px;
+    height: 260px;
   }
 
   .options-container {
