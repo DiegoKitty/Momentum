@@ -1,3 +1,3 @@
 # Momentum
 
-Deploy: https://diegokitty.github.io/Momentum/
+Deploy: https://diegokitty.github.io/Momentum/Momentum
