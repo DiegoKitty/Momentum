@@ -1,4 +1,4 @@
-import {lang} from './index.js'
+import {lang} from "./index.js"
 
 const getRandomNum = (min, max) => {
   min = Math.ceil(min);

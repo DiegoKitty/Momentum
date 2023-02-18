@@ -1,15 +1,15 @@
-import {lang} from './index.js'
+import {lang} from "./index.js"
 
 const city = document.querySelector(".city");
-const weatherIcon = document.querySelector('.weather-icon');
-const temperature = document.querySelector('.temperature');
-const weatherDescription = document.querySelector('.weather-description');
+const weatherIcon = document.querySelector(".weather-icon");
+const temperature = document.querySelector(".temperature");
+const weatherDescription = document.querySelector(".weather-description");
 const wind = document.querySelector(".wind");
 const humidity = document.querySelector(".humidity");
 
 const setCityName = () => {
-  if (localStorage.getItem('city')) {
-    city.value = localStorage.getItem('city');
+  if (localStorage.getItem("city")) {
+    city.value = localStorage.getItem("city");
   } else if (localStorage.getItem("lang")) {
     city.value = lang.city;
   } else {
@@ -25,14 +25,14 @@ async function getWeather() {
     if (!res.ok) {
       alert (lang.weather.alert,"");
     } 
-    temperature.textContent = isResOk ? `${Math.round(data.main.temp)}°C`: ''
-    weatherDescription.textContent = isResOk ? data.weather[0].description : ''
-    wind.textContent = isResOk ? `${lang.weather.wind} ${Math.round(data.wind.speed)} ${lang.weather.metre}`: ''
-    humidity.textContent = isResOk ? `${lang.weather.humidity} ${data.main.humidity}%`: ''
+    temperature.textContent = isResOk ? `${Math.round(data.main.temp)}°C`: ""
+    weatherDescription.textContent = isResOk ? data.weather[0].description : ""
+    wind.textContent = isResOk ? `${lang.weather.wind} ${Math.round(data.wind.speed)} ${lang.weather.metre}`: ""
+    humidity.textContent = isResOk ? `${lang.weather.humidity} ${data.main.humidity}%`: ""
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   }
   
-  city.addEventListener('change', () => {
+  city.addEventListener("change", () => {
     localStorage.city = city.value;
     getWeather();
   })

@@ -1,9 +1,9 @@
-import {lang} from './index.js'
+import {lang} from "./index.js"
 
 const slideNext = document.querySelector(".slide-next");
 const slidePrev = document.querySelector(".slide-prev");
 const setcheckboxImage = document.querySelectorAll(".checkbox-image");
-const gitHubCheckbox = document.getElementById("7");
+const gitHubCheckbox = document.getElementById("8");
 const imageTag = document.querySelector(".image-tag");
 
 const greetings = {
@@ -93,7 +93,7 @@ function saveCheckbox (name, checkbox) {
 // Поле для тэга
 
 const showFieldTag = () => {
-  const isGitHubChecked = document.getElementById(7).checked;
+  const isGitHubChecked = document.getElementById(8).checked;
   if (!isGitHubChecked) {
     imageTag.classList.add("image-tag-active");
   } else {
@@ -117,14 +117,14 @@ setcheckboxImage.forEach((el, index) => {
     })
 
     showFieldTag();
-    saveCheckbox('arrOfImageCheckbox', setcheckboxImage);
+    saveCheckbox("arrOfImageCheckbox", setcheckboxImage);
   });
 })
 
 // Загружать положение чекбокса
 
 if (localStorage.getItem("arrOfImageCheckbox")) {
-  const arrOfCheckbox = JSON.parse(localStorage.getItem('arrOfImageCheckbox'));
+  const arrOfCheckbox = JSON.parse(localStorage.getItem("arrOfImageCheckbox"));
   arrOfCheckbox.forEach(input => {
     document.getElementById(input.id).checked = input.checked;
   })
@@ -134,9 +134,9 @@ if (localStorage.getItem("arrOfImageCheckbox")) {
 // Менять фон при клике на слайдер
 
 const changeBg = () => {
-  const isGitHubChecked = document.getElementById("7").checked;
-  const isUnsplashChecked = document.getElementById("8").checked;
-  const isFlickerchecked = document.getElementById("9").checked;
+  const isGitHubChecked = document.getElementById("8").checked;
+  const isUnsplashChecked = document.getElementById("9").checked;
+  const isFlickerchecked = document.getElementById("10").checked;
   if(isUnsplashChecked) getBgFromUnsplash();
   else if (isFlickerchecked) getBgFromFlickr();
   return isGitHubChecked;
@@ -163,17 +163,17 @@ const getSlidePrev = () => {
   }
 }
 
-slideNext.addEventListener('click', getSlideNext);
-slidePrev.addEventListener('click', getSlidePrev);
+slideNext.addEventListener("click", getSlideNext);
+slidePrev.addEventListener("click", getSlidePrev);
 
 // Установить последний фон при перезагрузке 
 
 const setLastBg = () => {
-  const isUnsplashchecked = document.getElementById(8).checked;
-  const isFlickerchecked = document.getElementById(9).checked;
+  const isUnsplashchecked = document.getElementById(9).checked;
+  const isFlickerchecked = document.getElementById(10).checked;
 
   if (isUnsplashchecked || isFlickerchecked) {
-    const url = JSON.parse(localStorage.getItem('apiSrc'));
+    const url = JSON.parse(localStorage.getItem("apiSrc"));
     document.body.style.backgroundImage = `url(${url})`
   } else {
     setBgFormGitHub();  // иначе установить фон из гитхаба
@@ -185,8 +185,8 @@ setLastBg();
 // Сохранить/ загрузить тэги поиска для API
 
 imageTag.addEventListener("change", () => {
-  const isUnsplashchecked = document.getElementById(8).checked;
-  const isFlickerchecked = document.getElementById(9).checked;
+  const isUnsplashchecked = document.getElementById(9).checked;
+  const isFlickerchecked = document.getElementById(10).checked;
   localStorage.setItem("imageTag", (imageTag.value));
   if(isUnsplashchecked) getBgFromUnsplash();
   else if (isFlickerchecked) getBgFromFlickr();

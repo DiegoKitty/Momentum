@@ -1,4 +1,4 @@
-import playList from './playList.js';
+import playList from "./playList.js";
 
 const playListContainer = document.querySelector(".play-list");
 const playPrev = document.querySelector(".play-prev");
@@ -22,9 +22,9 @@ const timeline = document.querySelector(".timeline");
 // Генерация списка из песен 
 
 playList.forEach(el => {
-  const li = document.createElement('li');
+  const li = document.createElement("li");
   li.textContent = el.title;
-  li.classList.add("play-item")
+  li.classList.add("play-item");
   playListContainer.append(li);
 })
 
@@ -122,7 +122,7 @@ const changeActiveAudio = (index) => {
 
 const addPauseIcon = (el) => {
   play.classList.add("pause");
-  el.classList.add("pause")
+  el.classList.add("pause");
 }
 
 function getTimeCodeFromNum(num) {
@@ -205,7 +205,7 @@ setInterval(() => {
 }, 100);
 
 
-volumeSlider.addEventListener('click', (e) => {
+volumeSlider.addEventListener("click", (e) => {
   const sliderWidth = getComputedStyle(volumeSlider).width;
   let newVolume = e.offsetX / parseInt(sliderWidth);
   audio.volume = newVolume > 1 ? 1 : newVolume >= 0? newVolume : 0 ;

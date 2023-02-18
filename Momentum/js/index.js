@@ -1,18 +1,18 @@
-import {en, ru} from './lang.js';
-import {showDay, showTime} from './date.js';
-import showGreeting from './showGreeting.js';
-import {getWeather, setCityName, city} from './getWeather.js';
-import getQuotes from './getQuotes.js';
-import  './background.js';
-import  './player.js';
-import  './links.js';
+import {en, ru} from "./lang.js";
+import {showDay, showTime} from "./date.js";
+import showGreeting from "./showGreeting.js";
+import {getWeather, setCityName, city} from "./getWeather.js";
+import getQuotes from "./getQuotes.js";
+import  "./background.js";
+import  "./player.js";
+import  "./links.js";
 
 let lang;
 
-if(!localStorage.getItem(`lang`)) {
+if(!localStorage.getItem("lang")) {
   lang = en;
 } else {
-  lang = JSON.parse(localStorage.getItem(`lang`));
+  lang = JSON.parse(localStorage.getItem("lang"));
 }
 
 export {lang}
@@ -35,8 +35,8 @@ const day = document.querySelector(".day");
 const time = document.querySelector(".time");
 const quotes = document.querySelector(".quotes");
 const settings = document.querySelector(".settings");
-const generalSetting = document.querySelector(".general-setting")
-const imagesSetting = document.querySelector(".images-setting")
+const generalSetting = document.querySelector(".general-setting");
+const imagesSetting = document.querySelector(".images-setting");
 const settingGeneralContainer = document.querySelector(".setting-general-container");
 const settingImagesContainer = document.querySelector(".setting-images-container");
 const settingIcon = document.querySelector(".setting-icon");
@@ -50,14 +50,14 @@ const visibleBlock = [time, day, weather, greetingBlock, quotes, player, linksCo
 imageTag.placeholder = lang.tag;
 
 generalSetting.addEventListener("click", () => {
-  imagesSetting.classList.remove("settings-name-active")
+  imagesSetting.classList.remove("settings-name-active");
   settingGeneralContainer.classList.remove("container-unactive");
   settingImagesContainer.classList.add("container-unactive");
   generalSetting.classList.add("settings-name-active")
 })
 
 imagesSetting.addEventListener("click", () => {
-  generalSetting.classList.remove("settings-name-active")
+  generalSetting.classList.remove("settings-name-active");
   settingImagesContainer.classList.remove("container-unactive");
   settingGeneralContainer.classList.add("container-unactive");
   imagesSetting.classList.add("settings-name-active")
@@ -98,7 +98,7 @@ settingHeading.forEach((el, index) => {
 // Сохранение положения чекбокса
 
 function saveCheckbox (name, checkbox) {
-  let arrOfCheckbox = []
+  let arrOfCheckbox = [];
   checkbox.forEach(input => {
     arrOfCheckbox.push({ id: input.id, checked: input.checked });
   })
@@ -107,7 +107,7 @@ function saveCheckbox (name, checkbox) {
 
 setcheckbox.forEach((el, index) => {
   el.addEventListener("click", () => {
-    saveCheckbox('arrOfHiddenCheckbox', setcheckbox);
+    saveCheckbox("arrOfHiddenCheckbox", setcheckbox);
     visibleBlock[index].classList.toggle("block-hidden");
   });
 })
@@ -115,7 +115,7 @@ setcheckbox.forEach((el, index) => {
 // Скрытие блоков
 
 function showBlocks () {
-  const arrOfCheckbox = JSON.parse(localStorage.getItem('arrOfHiddenCheckbox'));
+  const arrOfCheckbox = JSON.parse(localStorage.getItem("arrOfHiddenCheckbox"));
   arrOfCheckbox.forEach(input => {
     document.getElementById(input.id).checked = input.checked;
   })

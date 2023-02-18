@@ -1,4 +1,4 @@
-import {lang} from './index.js'
+import {lang} from "./index.js"
 
 const name = document.querySelector(".name");
 const greeting = document.querySelector(".greeting");
@@ -18,17 +18,17 @@ const showGreeting = () => {
   return greetings[Math.floor(hours / 6)];
 }
 
-name.addEventListener('change', () => {
-  localStorage.setItem(`name`, name.value);
+name.addEventListener("change", () => {
+  localStorage.setItem("name", name.value);
 })
 
 function getLocalStorage() {
-  if(localStorage.getItem(`name`)) {
+  if(localStorage.getItem("name")) {
     const name = document.querySelector(".name");
-    name.value = localStorage.getItem(`name`);
+    name.value = localStorage.getItem("name");
   }
 }
 
-window.addEventListener('load', getLocalStorage)
+window.addEventListener("load", getLocalStorage);
 
 export default showGreeting

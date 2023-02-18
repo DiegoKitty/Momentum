@@ -80,7 +80,6 @@ editBtnDelete.addEventListener("click", () => {
   linksEditContainer.classList.remove("edit-container-active");
 })
 
-
 // События с контейнером создания ссылки
 
 newLinkBtn.addEventListener("click", () => {

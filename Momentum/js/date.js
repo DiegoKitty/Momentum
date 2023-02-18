@@ -1,7 +1,7 @@
-import {lang} from './index.js'
+import {lang} from "./index.js"
 
 const day = document.querySelector(".day");
-const options = {weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC'};
+const options = {weekday: "long", month: "long", day: "numeric", timeZone: "UTC"};
 
 const showDay = () => {
   const date = new Date();
