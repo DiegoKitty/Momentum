@@ -56,6 +56,7 @@ ul {
 }
 
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -68,16 +69,16 @@ ul {
 /* PLAYER */
 
 .player {
-  transition: 0.3s ease-in-out;
   text-align: left;
+  transition: 0.3s ease-in-out;
 }
 
 .player-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 120px;
   margin-bottom: 10px;
+  width: 120px;
 }
 
 .play-list {
@@ -288,6 +289,278 @@ ul {
 }
 /* PLAYER */
 
+/* LINKS */
+
+.links-container {
+  position: absolute;
+  top: 20px;  
+  left: 50%; 
+  transform: translate(-50%);
+  display: flex;
+  flex-direction: column;
+  padding-right: 15px;
+  width: 290px;
+  z-index: 15;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
+
+.links-heading {
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.search-icon:hover {
+  transform: scale(1.3);
+  transition: 0.3s ease-in-out;
+}
+
+.links-search {
+  width: 100%;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+}
+
+.current-links-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-right: 5px;
+  padding-top: 7px;
+  max-height: 200px;
+  margin-top: 10px;
+  border-radius: 15px;
+  background-color: rgba(71, 62, 62, 1);
+
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+}
+
+.links-container-active {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-container {
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.close-links-icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background-image: url(../assets/svg/close-links.svg);
+  background-repeat: no-repeat;
+  background-size: 28px 28px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.close-links-icon:hover {
+  background-color: #181515;
+  transition: 0.3s ease-in-out;
+}
+
+.links-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 15px 0px 15px;
+  max-height: 150px;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.links-list::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 10px;
+  background-color: #cacae4;
+}
+
+.links-list::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background-color: #729696;
+}
+
+.link-item-container {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  cursor: pointer;
+  max-height: 150px;
+}
+
+.link-name {
+  display: block;
+  margin-right: 5px;
+  max-width: 225px;
+  text-align: left;
+  word-break: break-all;
+  transition: 0.3s ease-in-out;
+}
+
+.link-name:not(:last-child) {
+  padding-bottom: 10px;
+}
+
+.link-name:hover {
+  color: aqua;
+  transition: 0.3s ease-in-out;
+}
+
+.edit-save,
+.edit-delete,
+.new-save,
+.new-save,
+.new-link {
+  margin: auto;
+  height: 50px;
+  margin-top: 20px;
+  padding: 5px;
+  font-size: 20px;
+  color: aqua;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.edit-btn-container {
+  display: flex;
+}
+
+.new-link {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+}
+
+.edit-heading {
+  color: aqua;
+}
+
+.link-edit-container {
+  max-height: 150px;
+}
+
+.link-edit-icon {
+  width: 10px;
+  height: 23px;
+  margin-bottom: 10px;
+  background-image: url(../assets/svg/links-edit.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 23px;
+  cursor: pointer;
+}
+
+.link-edit-hover {
+  opacity: 1;
+  transition: 0.3 s ease-in-out;
+}
+
+.links-edit-container,
+.links-new-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  font-size: 20px;
+  border-radius: 15px;
+  background-color: rgba(71, 62, 62, 1);
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  transition: 0.3s ease-in-out;
+}
+
+.back-icon-edit,
+.back-icon-new {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background-image: url(../assets/svg/edit-back.svg);
+  background-repeat: no-repeat;
+  background-position: 0px 5px;
+  background-size: 28px 28px;
+  cursor: pointer;
+  z-index: 15;
+}
+
+.edit-container-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+  transition: 0.3s ease-in-out;
+}
+
+.edit-heading:not(:first-child) {
+  margin-top: 10px;
+}
+
+.edit-name,
+.edit-link,
+.create-new-name,
+.create-new-link {
+  margin-top: 10px;
+  padding-bottom: 5px;
+  font-size: 20px;
+  line-height: 24px;
+  color: #fff;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+  transition: 0.3s ease-in-out;
+}
+
+.links-heading:hover {
+  color: rgb(225, 55, 25);
+  transition: 0.3s ease-in-out;
+}
+
+.edit-save:hover,
+.edit-delete:hover,
+.new-link:hover,
+.new-save:hover {
+  color: rgb(225, 55, 25);
+  background-color: #fff;
+  transition: 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
 /* WEATHER */
 
 .weather {
@@ -469,7 +742,7 @@ ul {
   left: 20px;
   padding: 25px;
   width: 400px;
-  max-height: 495px;
+  max-height: 525px;
   border-radius: 15px;
   font-size: 18px;
   background-color: rgb(46, 38, 38);
@@ -729,8 +1002,6 @@ input:checked + .slider:before {
   height: 48px;
 }
 
-
-
 @media (hover: hover) {
   .play-item:hover {
     color: aqua;
@@ -848,6 +1119,39 @@ input:checked + .slider:before {
     left: 50px;
   }
 
+  .link-name {
+    font-size: 16px;
+  }
+
+  .link-edit-icon {
+    height: 19px;
+    background-size: 19px;
+}
+
+  .close-links-icon {
+    width: 24px;
+    height: 24px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background-size: 24px 24px;
+  }
+
+  .edit-save,
+  .edit-delete,
+  .new-save,
+  .new-save,
+  .new-link {
+    margin: auto;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 3px;
+    font-size: 16px;
+    color: aqua;
+    border-radius: 15px;
+    transition: 0.3s ease-in-out;
+  }
+
   .settings {
     width: 270px;
   }
@@ -856,6 +1160,12 @@ input:checked + .slider:before {
     position: static;
     margin-top: 25px;
     padding-bottom: 0;
+  }
+}
+
+@media (max-width: 880px) {
+  .links-container {
+    display: none;
   }
 }
 
@@ -935,7 +1245,7 @@ input:checked + .slider:before {
   
   .setting-general-container,
   .setting-images-container {
-    height: 340px;
+    height: 360px;
   }
 
   .options-container {

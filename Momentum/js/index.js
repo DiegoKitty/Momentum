@@ -5,6 +5,7 @@ import {getWeather, setCityName, city} from './getWeather.js';
 import getQuotes from './getQuotes.js';
 import  './background.js';
 import  './player.js';
+import  './links.js';
 
 let lang;
 
@@ -27,6 +28,7 @@ const player = document.querySelector(".player");
 const playerContainer = document.querySelector(".player-container");
 const playListContainer = document.querySelector(".play-list");
 const dropdownList = document.querySelector(".dropdown-list");
+const linksContainer = document.querySelector(".links-container");
 const weather = document.querySelector(".weather");
 const greetingBlock = document.querySelector('.greeting-container');
 const day = document.querySelector(".day");
@@ -43,7 +45,7 @@ const enIcon = document.querySelector(".en-lang");
 const ruIcon = document.querySelector(".ru-lang");
 const setcheckbox = document.querySelectorAll(".checkbox");
 const imageTag = document.querySelector(".image-tag");
-const visibleBlock = [time, day, weather, greetingBlock, quotes, player];
+const visibleBlock = [time, day, weather, greetingBlock, quotes, player, linksContainer];
 
 imageTag.placeholder = lang.tag;
 
@@ -135,7 +137,7 @@ settingIcon.addEventListener("click", () => {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
 
-  if (screenHeight < 910) {
+  if (screenHeight < 940) {
     playerContainer.classList.toggle("active--hidden");
     dropdownList.classList.toggle("active--hidden");
   }
@@ -154,4 +156,5 @@ settingIcon.addEventListener("click", () => {
 window.addEventListener('load', function () {
   document.getElementsByTagName("html")[0].style.visibility = "visible";
 });
+
 

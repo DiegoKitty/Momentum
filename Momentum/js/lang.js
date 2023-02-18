@@ -12,9 +12,9 @@ const en = {
     day: "en-US",
     time: "en-US",
     quotesUrl: './json/quotesEN.json',
-    setting: ["General", "Customize your dashbord", "Images", "Choose background", "LANGUAGE", "Language", "HIDE", "Time", "Date", "Weather", "Gretings", "Quotes", "Player", "BACKGROUND IMAGE", "GitHub", "Unsplash", "Flickr"],
+    setting: ["Links", "Add new link", "Name", "Link", "Create", "Name", "Link", "Save", "Delete", "General", "Customize your dashbord", "Images", "Choose background", "LANGUAGE", "Language", "HIDE", "Time", "Date", "Weather", "Gretings", "Quotes", "Player", "Links", "BACKGROUND IMAGE", "GitHub", "Unsplash", "Flickr"],
     tag: "Write keyword to search image",
-    tagAlert: "There are no images for your request. Enter another tag.",
+    tagAlert: "There are no images for your request or you have reached the request limit.",
   }
   
   const ru = {
@@ -31,9 +31,9 @@ const en = {
     day: "ru-RU",
     time: "ru-RU",
     quotesUrl: './json/quotesRU.json',
-    setting: ["Основные", "Настройте приложение", "Обои", "Выберите источник", "ВЫБРАТЬ ЯЗЫК", "Язык", "СКРЫТЬ", "Часы", "Дата", "Погода", "Приветствие", "Цитаты", "Аудиоплеер", "ФОНОВОЕ ИЗОБРАЖЕНИЕ", "GitHub", "Unsplash", "Flickr"],
+    setting: ["Ссылки", "Добавить ссылку", "Имя", "Ссылка", "Создать", "Имя", "Ссылка", "Сохранить", "Удалить", "Основные", "Настройте приложение", "Обои", "Выберите источник", "ВЫБРАТЬ ЯЗЫК", "Язык", "СКРЫТЬ", "Часы", "Дата", "Погода", "Приветствие", "Цитаты", "Аудиоплеер", "Ссылки", "ФОНОВОЕ ИЗОБРАЖЕНИЕ", "GitHub", "Unsplash", "Flickr"],
     tag: "Введите тэг для поиска",
-    tagAlert: "По Вашему запросу нет изображений. Введите другой тэг."
+    tagAlert: "По Вашему запросу нет изображений, либо вы достигли лимита запросов.",
   }
   
   export {en, ru}
