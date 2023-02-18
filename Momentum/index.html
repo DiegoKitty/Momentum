@@ -16,9 +16,9 @@
       <div class="song-name"></div>
       <div class="author-name"></div>
       <div class="player-controls">
-        <button class="play-prev player-icon" arie-label="play prev audio"></button>
-        <button class="play player-icon" arie-label="play audio"></button>
-        <button class="play-next player-icon" arie-label="play next audio"></button>
+        <button class="play-prev player-icon" title="play prev audio"></button>
+        <button class="play player-icon"  title="play audio"></button>
+        <button class="play-next player-icon" title="play next audio"></button>
       </div>
       <div class="control">
         <div class="control-top">
@@ -43,22 +43,20 @@
       <div class="search">
         <div class="links-heading set-text">Links</div>
         <img src="./assets/svg/search.svg" alt="search" class="search-icon">
-        <input type="text" class="links-search">
+        <input type="text" class="links-search" title="Write a request">
       </div>
+
       <div class="current-links-container">
         <div class="links-list">
           <div class="link-item-container">
           </div>
           <div class="link-edit-container">
           </div>
-          </div>
-
-          <div class="btn-container">
-            <div class="close-links-icon"></div>
-        <button class="new-link set-text"></button>
-          </div>
-          
-
+        </div>
+        <div class="btn-container">
+          <div class="close-links-icon"></div>
+          <button class="new-link set-text"></button>
+        </div>
 
         <div class="links-new-container">
           <div class="back-icon-new"></div>
@@ -68,7 +66,7 @@
           <input type="text" class="create-new-link">
           <button class="new-save set-text"></button>
         </div>
-
+        
         <div class="links-edit-container">
           <div class="back-icon-edit"></div>
           <div class="edit-heading edit-heading-name set-text"></div>
@@ -81,9 +79,9 @@
             <button class="edit-delete set-text"></button>
           </div>
         </div>
-
       </div>
     </div>
+
     <div class="weather">
       <input type="text" class="city" aria-label="City">
       <i class="weather-icon owf"></i>
@@ -96,10 +94,11 @@
       <div class="humidity"></div>
     </div>
   </header>
+
   <main class="main">
     <div class="slider-icons">
-      <button class="slide-prev slider-icon" arie-label="change background"></button>
-      <button class="slide-next slider-icon" arie-label="change background"></button>
+      <button class="slide-prev slider-icon" title="change background"></button>
+      <button class="slide-next slider-icon" title="change background"></button>
     </div>
     <time class="time" datetime="2023">0:00</time>
     <div class="day"></div>
@@ -111,7 +110,7 @@
 
   <footer class="footer">
     <div class="quotes">
-      <button class="change-quote" arie-label="change quote"></button>
+      <button class="change-quote" title="change quote"></button>
       <div>
         <div class="quote"></div>
         <div class="author"></div>
@@ -120,7 +119,6 @@
 
     <div class="settings">
       <div class="name-of-setting">
-
         <div class="general-setting settings-name-active">
           <div class="heading-general set-text">
           </div>
@@ -135,139 +133,137 @@
           </div>
         </div>
       </div>
-
-
-        <div class="setting-general-container">
+      
+      <div class="setting-general-container">
+        <div class="language-container">
           <div class="languages set-text">LANGUAGES</div>
-          <div class="language-container">
-            <div class="language-heading set-text">Language</div>
-            <div class="change-language">
-              <div class="en-lang"></div>
-              <div class="ru-lang"></div>
-            </div>
+          <div class="language-heading set-text">Language</div>
+          <div class="change-language">
+            <div class="en-lang"></div>
+            <div class="ru-lang"></div>
           </div>
-          <div class="hide set-text">HIDE</div>
-          <div class="time-set options-container">
-            <div class="options-heading set-text">
-              Time
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox" id="1" aria-label="hide time">
-              <span class="slider round"></span>
-            </label>
+        </div>
+        <div class="hide set-text">HIDE</div>
+        <div class="time-set options-container">
+          <div class="options-heading set-text">
+            Time
           </div>
-          <div class="date options-container">
-            <div class="options-heading set-text">
-              Date
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox" id="2" aria-label="hide date">
-              <span class="slider round"></span>
-            </label>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="1" aria-label="hide time">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="date options-container">
+          <div class="options-heading set-text">
+            Date
           </div>
-          <div class="weather-set options-container">
-            <div class="options-heading set-text">
-              Weather
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox" id="3" aria-label="hide weather">
-              <span class="slider round"></span>
-            </label>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="2" aria-label="hide date">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="weather-set options-container">
+          <div class="options-heading set-text">
+            Weather
           </div>
-          <div class="greetings options-container">
-            <div class="options-heading set-text">
-              Gretings
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox" id="4" aria-label="hide greetings">
-              <span class="slider round"></span>
-            </label>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="3" aria-label="hide weather">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="greetings options-container">
+          <div class="options-heading set-text">
+            Gretings
           </div>
-          <div class="quotes options-container">
-            <div class="options-heading set-text">
-              Quotes
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox" id="5" aria-label="hide quotes">
-              <span class="slider round"></span>
-            </label>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="4" aria-label="hide greetings">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="quotes options-container">
+          <div class="options-heading set-text">
+            Quotes
           </div>
-          <div class="player options-container">
-            <div class="options-heading set-text">
-              Player
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox" id="6" aria-label="hide player">
-              <span class="slider round"></span>
-            </label>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="5" aria-label="hide quotes">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="player options-container">
+          <div class="options-heading set-text">
+            Player
           </div>
-          <div class="player options-container">
-            <div class="options-heading set-text">
-              Links
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox" id="7" aria-label="hide player">
-              <span class="slider round"></span>
-            </label>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="6" aria-label="hide player">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="player options-container">
+          <div class="options-heading set-text">
+            Links
           </div>
+          <label class="switch">
+            <input type="checkbox" class="checkbox" id="7" aria-label="hide player">
+            <span class="slider round"></span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="setting-images-container container-unactive">
+        <div class="image set-text">BACKGROUND IMAGE</div>
+        <div class="github options-container">
+          <div class="options-heading set-text">
+            GitHub
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="checkbox-image" id="8" aria-label="image from github">
+            <span class="slider round"></span>
+          </label>
         </div>
         
-        <div class="setting-images-container container-unactive">
-          <div class="image set-text">BACKGROUND IMAGE</div>
-          <div class="github options-container">
-            <div class="options-heading set-text">
-              GitHub
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox-image" id="8" aria-label="image from github">
-              <span class="slider round"></span>
-            </label>
+        <div class="flicker options-container">
+          <div class="options-heading set-text">
+            Unsplash
           </div>
-
-          <div class="flicker options-container">
-            <div class="options-heading set-text">
-              Unsplash
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox-image" id="9" aria-label="image from unsplash">
-              <span class="slider round"></span>
-            </label>
-          </div>
-
-          <div class="unsplash options-container">
-            <div class="options-heading set-text">
-              Flicker
-            </div>
-            <label class="switch">
-              <input type="checkbox" class="checkbox-image" id="10" aria-label="image from flicker">
-              <span class="slider round"></span>
-            </label>
-          </div>
-          <input type="text" class="image-tag">
+          <label class="switch">
+            <input type="checkbox" class="checkbox-image" id="9" aria-label="image from unsplash">
+            <span class="slider round"></span>
+          </label>
         </div>
+        
+        <div class="unsplash options-container">
+          <div class="options-heading set-text">
+            Flicker
+          </div>
+          <label class="switch">
+            <input type="checkbox" class="checkbox-image" id="10" aria-label="image from flicker">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <input type="text" class="image-tag">
       </div>
-
-      <img src="./assets/img/settings.png" alt="setting-icon" class="setting-icon">
-      
-      <div class="logo-container">
-        <ul class="footer-list">
-          <li class="footer-item logo-item">
-            <a href="https://rs.school/js/" class="footer-link" target="_blank" aria-label="rs-school course">
-              <img src="./assets/svg/rs_school_js.svg" class="rs-logo" alt="logo">
-            </a>
-          </li>
-          <li class="footer-item date-item">
-            © 2023
-          </li>
-          <li class="footer-item github-item">
-            <a href="https://github.com/DiegoKitty" class="footer-link" target="_blank" aria-label="github account">
-              <img src="./assets/img/gihub.png" class="gihub" alt="">
-            </a>
-          </li>
-        </ul>
-      </div>
-    </footer>
+    </div>
+    
+    <img src="./assets/img/settings.png" alt="setting-icon" class="setting-icon">
+    <div class="logo-container">
+      <ul class="footer-list">
+        <li class="footer-item logo-item">
+          <a href="https://rs.school/js/" class="footer-link" target="_blank" aria-label="rs-school course">
+            <img src="./assets/svg/rs_school_js.svg" class="rs-logo" alt="logo">
+          </a>
+        </li>
+        <li class="footer-item date-item">
+          © 2023
+        </li>
+        <li class="footer-item github-item">
+          <a href="https://github.com/DiegoKitty" class="footer-link" target="_blank" aria-label="github account">
+            <img src="./assets/img/gihub.png" class="gihub" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
     <script src="./js/index.js" type="module"></script>
-  </body>
+  </footer>
+</body>
 </html>
 
