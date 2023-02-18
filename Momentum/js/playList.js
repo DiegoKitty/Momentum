@@ -18,13 +18,7 @@ const playList = [
       author: "Halcyon",
       src: "./assets/sounds/Runaway (Heuse Remix).mp3",
       duration: "2:09",
-    },  
-    {      
-      title: "Broken Bones",
-      author: "Burgos",
-      src: "./assets/sounds/Broken Bones.mp3",
-      duration: "2:26",
-    },  
+    },   
     {      
       title: "А мы не ангелы, парень",
       author: "Би-2",
