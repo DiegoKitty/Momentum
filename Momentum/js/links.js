@@ -93,6 +93,7 @@ const addNewLink = () => {
   a.textContent = createInputName.value;
   a.href = createInputLink.value;
   a.classList.add("link-name");
+  a.setAttribute('target', '_blank');
   linkItemContainer.append(a);
 }
 

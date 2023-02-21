@@ -31,6 +31,8 @@ const playerContainer = document.querySelector(".player-container");
 const playListContainer = document.querySelector(".play-list");
 const dropdownList = document.querySelector(".dropdown-list");
 const linksContainer = document.querySelector(".links-container");
+const linksHeading = document.querySelector(".links-heading");
+const currentLinksContainer = document.querySelector(".current-links-container")
 const weather = document.querySelector(".weather");
 const greetingBlock = document.querySelector('.greeting-container');
 const day = document.querySelector(".day");
@@ -131,6 +133,18 @@ function showBlocks () {
 
 if (localStorage.getItem("arrOfHiddenCheckbox")) {
   showBlocks();
+}
+
+window.onclick = function(e) {
+  if (e.target !== settings && e.target !== settingIcon) {
+    settings.classList.remove("settings-active");
+    playerContainer.classList.remove("active--hidden");
+    dropdownList.classList.remove("active--hidden");
+  }
+
+  if (e.target !== currentLinksContainer && e.target !== linksHeading) {
+    currentLinksContainer.classList.remove("links-container-active");
+  }
 }
 
 // Адаптив
