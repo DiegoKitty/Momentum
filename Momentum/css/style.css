@@ -150,6 +150,7 @@ ul {
 }
 
 .change-quote {
+  position: relative;
   z-index: 40;
 }
 
@@ -295,12 +296,20 @@ ul {
   height: 25px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background-color: rgb(124, 119, 125);
+  background-color: rgb(189, 183, 191);
   background-image: url(../assets/img/player-dropdown.png);
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: 32px 32px;
   cursor: pointer;
   z-index: 10;
+  transition: 0.3s ease-in-out;
+}
+
+.dropdown-list-active {
+  background-image: url(../assets/img/player-dropdown-active.png);
+  background-position: center 3px;
+  transition: 0.3s ease-in-out;
 }
 
 .open-list {
@@ -991,7 +1000,7 @@ input:checked + .slider:before {
 
 @media (hover: hover) {
   .play-item:hover {
-    color: aqua;
+    color:rgb(225, 55, 25);
     transition: 0.3s ease-in-out;
   }
   
