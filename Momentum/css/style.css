@@ -66,10 +66,25 @@ ul {
   padding: 20px;
 }
 
+.popup {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
+
+.popup-active {
+  display: block;
+}
+
 /* PLAYER */
 
 .player {
   text-align: left;
+  z-index: 40;
   transition: 0.3s ease-in-out;
 }
 
@@ -132,6 +147,10 @@ ul {
   opacity: .8;
   cursor: pointer;
   transition: .3s;  
+}
+
+.change-quote {
+  z-index: 40;
 }
 
 .player-icon:active,
@@ -251,6 +270,7 @@ ul {
   height: 32px;
   background-image: url(../assets/svg/sound.svg);
   transition: 0.25s ease-in-out;
+  cursor: pointer;
 }
 
 .volume-button--mute {
@@ -300,7 +320,7 @@ ul {
   flex-direction: column;
   padding-right: 15px;
   width: 290px;
-  z-index: 15;
+  z-index: 40;
 }
 
 .search {
@@ -346,12 +366,14 @@ ul {
   background-color: rgba(71, 62, 62, 1);
   opacity: 0;
   visibility: hidden;
+  z-index: 40;
   transition: 0.3s ease-in-out;
 }
 
 .links-container-active {
   opacity: 1;
   visibility: visible;
+  z-index: 40;
   transition: 0.3s ease-in-out;
 }
 
@@ -561,6 +583,7 @@ ul {
   outline: 0;
   border-bottom: 1px solid #fff;
   background-color: transparent;
+  z-index: 40;
 }
 
 .city::placeholder {  
@@ -708,7 +731,7 @@ ul {
   opacity: 0;
   visibility: hidden;
   transition: 0.3s ease-in-out;
-  z-index: 15;
+  z-index: 40;
 }
 
 .setting-general-container,
@@ -720,7 +743,7 @@ ul {
   opacity: 1;
   visibility: visible;
   transition: 0.3s ease-in-out;
-  z-index: 15;
+  z-index: 40;
 }
 
 .name-of-setting {
@@ -925,6 +948,7 @@ input:checked + .slider:before {
   height: 40px;
   width: 40px;
   cursor: pointer;
+  z-index: 40;
   transition: 0.3s ease-in-out;
 }
 
@@ -1202,7 +1226,7 @@ input:checked + .slider:before {
   }
 
   .settings {
-    max-height: 430px;
+    max-height: 450px;
   }
 }
 

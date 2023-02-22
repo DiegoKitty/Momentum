@@ -25,6 +25,7 @@ setCityName();
 getWeather();
 getQuotes();
 
+const popup = document.querySelector(".popup")
 const main = document.querySelector(".main");
 const player = document.querySelector(".player");
 const playerContainer = document.querySelector(".player-container");
@@ -135,23 +136,29 @@ if (localStorage.getItem("arrOfHiddenCheckbox")) {
   showBlocks();
 }
 
-window.onclick = function(e) {
-  if (e.target !== settings && e.target !== settingIcon) {
-    settings.classList.remove("settings-active");
-    playerContainer.classList.remove("active--hidden");
-    dropdownList.classList.remove("active--hidden");
-  }
+linksHeading.addEventListener("click", () => {
+  popup.classList.add("popup-active");
+})
 
-  if (e.target !== currentLinksContainer && e.target !== linksHeading) {
-    currentLinksContainer.classList.remove("links-container-active");
-  }
-}
+popup.addEventListener("click", () => {
+  popup.classList.remove("popup-active");
+  playerContainer.classList.remove("active--hidden");
+  dropdownList.classList.remove("active--hidden");
+  currentLinksContainer.classList.remove("links-container-active");
+  settings.classList.remove("settings-active");
+  main.classList.remove("active--hidden");
+  quotes.classList.remove("active--hidden");
+})
 
 // Адаптив
 
 settingIcon.addEventListener("click", () => {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
+
+  if (!popup.classList.contains("popup-active")) {
+    popup.classList.toggle("popup-active");
+  }
 
   if (screenHeight < 940) {
     playerContainer.classList.toggle("active--hidden");
