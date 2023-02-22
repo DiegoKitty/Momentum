@@ -25,12 +25,15 @@ setCityName();
 getWeather();
 getQuotes();
 
+const popup = document.querySelector(".popup")
 const main = document.querySelector(".main");
 const player = document.querySelector(".player");
 const playerContainer = document.querySelector(".player-container");
 const playListContainer = document.querySelector(".play-list");
 const dropdownList = document.querySelector(".dropdown-list");
 const linksContainer = document.querySelector(".links-container");
+const linksHeading = document.querySelector(".links-heading");
+const currentLinksContainer = document.querySelector(".current-links-container")
 const weather = document.querySelector(".weather");
 const greetingBlock = document.querySelector('.greeting-container');
 const day = document.querySelector(".day");
@@ -133,11 +136,29 @@ if (localStorage.getItem("arrOfHiddenCheckbox")) {
   showBlocks();
 }
 
+linksHeading.addEventListener("click", () => {
+  popup.classList.add("popup-active");
+})
+
+popup.addEventListener("click", () => {
+  popup.classList.remove("popup-active");
+  playerContainer.classList.remove("active--hidden");
+  dropdownList.classList.remove("active--hidden");
+  currentLinksContainer.classList.remove("links-container-active");
+  settings.classList.remove("settings-active");
+  main.classList.remove("active--hidden");
+  quotes.classList.remove("active--hidden");
+})
+
 // Адаптив
 
 settingIcon.addEventListener("click", () => {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
+
+  if (!popup.classList.contains("popup-active")) {
+    popup.classList.toggle("popup-active");
+  }
 
   if (screenHeight < 940) {
     playerContainer.classList.toggle("active--hidden");

@@ -176,13 +176,13 @@ volumeBtn.addEventListener("click", () => {
   audio.muted = !audio.muted;
 })
 
-volumeBtn.addEventListener("mousemove", () => {
-  volumeSlider.classList.add("volume-slider--active");
-})
+// volumeBtn.addEventListener("mouseover", () => {
+//   volumeSlider.classList.add("volume-slider--active");
+// })
 
-volumeBtn.addEventListener("mouseleave", () => {
-  volumeSlider.classList.remove("volume-slider--active");
-})
+// volumeBtn.addEventListener("mouseleave", () => {
+//   volumeSlider.classList.remove("volume-slider--active");
+// })
 
  // Обновление текущей секунды аудио
 
@@ -192,17 +192,41 @@ setInterval(() => {
 
 // Получить currentTime при клике на таймлайн
 
-timeline.addEventListener("click", e => {
-  const timelineWidth = getComputedStyle(timeline).width;
-  const timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
+const progressBar = document.querySelector(".progress");
+const timelineWidth = getComputedStyle(timeline).width;
+let isMouseDown = false;
+let timeToSeek;
+
+const showProgressBar = (e) => {
+  timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
+  progressBar.style.width = timeToSeek / audio.duration * 100 + "%";
+}
+
+timeline.addEventListener("mousedown", function(e) {
+  isMouseDown = true;
+  showProgressBar(e);
+})
+
+timeline.addEventListener("mouseup", function(e) {
+  isMouseDown = false;
+  showProgressBar(e);
   audio.currentTime = timeToSeek;
 })
 
+timeline.addEventListener("mousemove", (e) => {
+  if(isMouseDown) {
+    showProgressBar(e)
+  } else {
+    return
+  }
+})
+
 setInterval(() => {
-  const progressBar = document.querySelector(".progress");
-  progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
-  songTime.textContent = getTimeCodeFromNum(audio.currentTime);
-}, 100);
+  if(!isMouseDown) {
+    progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+    songTime.textContent = getTimeCodeFromNum(audio.currentTime);
+  }
+}, 50);
 
 
 volumeSlider.addEventListener("click", (e) => {

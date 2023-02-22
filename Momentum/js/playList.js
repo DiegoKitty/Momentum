@@ -18,7 +18,7 @@ const playList = [
       author: "Halcyon",
       src: "./assets/sounds/Runaway (Heuse Remix).mp3",
       duration: "2:09",
-    },   
+    },  
     {      
       title: "А мы не ангелы, парень",
       author: "Би-2",

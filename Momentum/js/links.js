@@ -29,7 +29,7 @@ const createInputLink = document.querySelector(".create-new-link");
 const createLinkBtn = document.querySelector(".new-save");
 
 linksHeading.addEventListener("click", () => {
-  currentLinksContainer.classList.add("links-container-active");
+  currentLinksContainer.classList.toggle("links-container-active");
 })
 
 // Открывать поисковик с запросом
@@ -93,6 +93,7 @@ const addNewLink = () => {
   a.textContent = createInputName.value;
   a.href = createInputLink.value;
   a.classList.add("link-name");
+  a.setAttribute('target', '_blank');
   linkItemContainer.append(a);
 }
 
