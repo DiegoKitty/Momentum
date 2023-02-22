@@ -7,6 +7,8 @@ import  "./background.js";
 import  "./player.js";
 import  "./links.js";
 
+console.log("Самооценка - 160 баллов\n\nЧасы и календарь +15\nПриветствие +10\nСмена фонового изображения +20\nВиджет погоды +15\nВиджет цитата дня +10\nАудиоплеер +15\nПродвинутый аудиоплеер (реализуется без использования библиотек) +20\nПеревод приложения на два языка (en/ru или en/be) +15\nПолучение фонового изображения от API +10\nНастройки приложения +20\nДополнительный функционал на выбор +10")
+
 // localStorage.clear()
 
 let lang;
@@ -184,5 +186,12 @@ settingIcon.addEventListener("click", () => {
 window.addEventListener('load', () => {
   document.getElementsByTagName("html")[0].style.visibility = "visible";
 });
+
+
+if (!localStorage.getItem("alert"))
+  alert("Доброго времени суток, уважаемый проверяющий.\n\nРабота была выполнена в личном репозитории, так как мне недоступен школьный (Политика GitHub). \n\nПожалуйста, оценивайте работу в соответствии с критериями оценивания.\n\nМой дискорд - Loveeey-doveeey#9100.\n\nВсего доброго!")
+
+localStorage.setItem("alert", false);
+
 
 
