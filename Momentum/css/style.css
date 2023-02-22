@@ -1209,6 +1209,10 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: flex-start;
   }
+
+  .settings {
+    max-height: 380px;
+  }
 }
 
 @media (max-height: 768px) {
