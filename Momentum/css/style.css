@@ -150,6 +150,7 @@ ul {
 }
 
 .change-quote {
+  position: relative;
   z-index: 40;
 }
 
