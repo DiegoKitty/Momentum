@@ -54,6 +54,10 @@ const visibleBlock = [time, day, weather, greetingBlock, quotes, player, linksCo
 
 imageTag.placeholder = lang.tag;
 
+dropdownList.addEventListener("click", () => {
+  dropdownList.classList.toggle("dropdown-list-active");
+})
+
 generalSetting.addEventListener("click", () => {
   imagesSetting.classList.remove("settings-name-active");
   settingGeneralContainer.classList.remove("container-unactive");
@@ -160,7 +164,7 @@ settingIcon.addEventListener("click", () => {
     popup.classList.toggle("popup-active");
   }
 
-  if (screenHeight < 940) {
+  if (screenHeight < 960) {
     playerContainer.classList.toggle("active--hidden");
     dropdownList.classList.toggle("active--hidden");
   }
@@ -172,11 +176,12 @@ settingIcon.addEventListener("click", () => {
 
   settings.classList.toggle("settings-active");
   playListContainer.classList.remove("open-list");
+  dropdownList.classList.remove("dropdown-list-active");
 })
 
 // Показывать содержимое страницы только тогда, когда она будет полностью готова к отображению
 
-window.addEventListener('load', function () {
+window.addEventListener('load', () => {
   document.getElementsByTagName("html")[0].style.visibility = "visible";
 });
 

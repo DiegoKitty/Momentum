@@ -176,14 +176,6 @@ volumeBtn.addEventListener("click", () => {
   audio.muted = !audio.muted;
 })
 
-// volumeBtn.addEventListener("mouseover", () => {
-//   volumeSlider.classList.add("volume-slider--active");
-// })
-
-// volumeBtn.addEventListener("mouseleave", () => {
-//   volumeSlider.classList.remove("volume-slider--active");
-// })
-
  // Обновление текущей секунды аудио
 
 setInterval(() => {
@@ -203,6 +195,7 @@ const showProgressBar = (e) => {
 }
 
 timeline.addEventListener("mousedown", function(e) {
+  e.preventDefault();
   isMouseDown = true;
   showProgressBar(e);
 })
@@ -211,14 +204,20 @@ timeline.addEventListener("mouseup", function(e) {
   isMouseDown = false;
   showProgressBar(e);
   audio.currentTime = timeToSeek;
+  progressBar.style.transition = "";
 })
 
 timeline.addEventListener("mousemove", (e) => {
   if(isMouseDown) {
-    showProgressBar(e)
+    progressBar.style.transition = "0s";
+    showProgressBar(e);
   } else {
-    return
+    return;
   }
+})
+
+document.addEventListener("mouseup", () => {
+  isMouseDown = false;
 })
 
 setInterval(() => {
