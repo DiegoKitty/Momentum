@@ -1,0 +1,192 @@
+import {en, ru} from "./lang.js";
+import {showDay, showTime} from "./date.js";
+import showGreeting from "./showGreeting.js";
+import {getWeather, setCityName, city} from "./getWeather.js";
+import getQuotes from "./getQuotes.js";
+import  "./background.js";
+import  "./player.js";
+import  "./links.js";
+
+console.log("Самооценка - 160 баллов\n\nЧасы и календарь +15\nПриветствие +10\nСмена фонового изображения +20\nВиджет погоды +15\nВиджет цитата дня +10\nАудиоплеер +15\nПродвинутый аудиоплеер (реализуется без использования библиотек) +20\nПеревод приложения на два языка (en/ru или en/be) +15\nПолучение фонового изображения от API +10\nНастройки приложения +20\nДополнительный функционал на выбор +10")
+
+// localStorage.clear()
+
+let lang;
+
+if(!localStorage.getItem("lang")) {
+  lang = ru;
+} else {
+  lang = JSON.parse(localStorage.getItem("lang"));
+}
+
+export {lang}
+
+showTime();
+showGreeting ();
+setCityName();
+getWeather();
+getQuotes();
+
+const popup = document.querySelector(".popup")
+const main = document.querySelector(".main");
+const player = document.querySelector(".player");
+const playerContainer = document.querySelector(".player-container");
+const playListContainer = document.querySelector(".play-list");
+const dropdownList = document.querySelector(".dropdown-list");
+const linksContainer = document.querySelector(".links-container");
+const linksHeading = document.querySelector(".links-heading");
+const currentLinksContainer = document.querySelector(".current-links-container")
+const weather = document.querySelector(".weather");
+const greetingBlock = document.querySelector('.greeting-container');
+const day = document.querySelector(".day");
+const time = document.querySelector(".time");
+const quotes = document.querySelector(".quotes");
+const settings = document.querySelector(".settings");
+const generalSetting = document.querySelector(".general-setting");
+const imagesSetting = document.querySelector(".images-setting");
+const settingGeneralContainer = document.querySelector(".setting-general-container");
+const settingImagesContainer = document.querySelector(".setting-images-container");
+const settingIcon = document.querySelector(".setting-icon");
+const settingHeading = document.querySelectorAll(".set-text");
+const enIcon = document.querySelector(".en-lang");
+const ruIcon = document.querySelector(".ru-lang");
+const setcheckbox = document.querySelectorAll(".checkbox");
+const imageTag = document.querySelector(".image-tag");
+const visibleBlock = [time, day, weather, greetingBlock, quotes, player, linksContainer];
+
+imageTag.placeholder = lang.tag;
+
+dropdownList.addEventListener("click", () => {
+  dropdownList.classList.toggle("dropdown-list-active");
+})
+
+generalSetting.addEventListener("click", () => {
+  imagesSetting.classList.remove("settings-name-active");
+  settingGeneralContainer.classList.remove("container-unactive");
+  settingImagesContainer.classList.add("container-unactive");
+  generalSetting.classList.add("settings-name-active")
+})
+
+imagesSetting.addEventListener("click", () => {
+  generalSetting.classList.remove("settings-name-active");
+  settingImagesContainer.classList.remove("container-unactive");
+  settingGeneralContainer.classList.add("container-unactive");
+  imagesSetting.classList.add("settings-name-active")
+})
+
+// Смена языка
+
+const changeLanguage = (language, town) => {
+  const city = document.querySelector(".city");
+  const name = document.querySelector(".name");
+  if (!localStorage.getItem('city')) {
+    city.value = town;
+  }
+  lang = language;
+  localStorage.setItem("lang", JSON.stringify(lang));
+  name.placeholder = lang.name;
+  imageTag.placeholder = lang.tag;
+  getQuotes();
+  getWeather();
+
+  settingHeading.forEach((el, index) => {
+    el.textContent = lang.setting[index];
+  })
+}
+
+enIcon.addEventListener("click", () => {
+  changeLanguage(en, "Minsk");
+})
+
+ruIcon.addEventListener("click", () => {
+  changeLanguage(ru, "Минск");
+})
+
+settingHeading.forEach((el, index) => {
+  el.textContent = lang.setting[index];
+})
+
+// Сохранение положения чекбокса
+
+function saveCheckbox (name, checkbox) {
+  let arrOfCheckbox = [];
+  checkbox.forEach(input => {
+    arrOfCheckbox.push({ id: input.id, checked: input.checked });
+  })
+  localStorage.setItem(`${name}`, JSON.stringify(arrOfCheckbox));
+}
+
+setcheckbox.forEach((el, index) => {
+  el.addEventListener("click", () => {
+    saveCheckbox("arrOfHiddenCheckbox", setcheckbox);
+    visibleBlock[index].classList.toggle("block-hidden");
+  });
+})
+
+// Скрытие блоков
+
+function showBlocks () {
+  const arrOfCheckbox = JSON.parse(localStorage.getItem("arrOfHiddenCheckbox"));
+  arrOfCheckbox.forEach(input => {
+    document.getElementById(input.id).checked = input.checked;
+  })
+
+  setcheckbox.forEach ((input, index) => {
+    if(input.checked) {
+      visibleBlock[index].classList.add("block-hidden");
+    }
+  })
+}
+
+if (localStorage.getItem("arrOfHiddenCheckbox")) {
+  showBlocks();
+}
+
+linksHeading.addEventListener("click", () => {
+  popup.classList.add("popup-active");
+})
+
+popup.addEventListener("click", () => {
+  popup.classList.remove("popup-active");
+  playerContainer.classList.remove("active--hidden");
+  dropdownList.classList.remove("active--hidden");
+  currentLinksContainer.classList.remove("links-container-active");
+  settings.classList.remove("settings-active");
+  main.classList.remove("active--hidden");
+  quotes.classList.remove("active--hidden");
+})
+
+// Адаптив
+
+settingIcon.addEventListener("click", () => {
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  if (!popup.classList.contains("popup-active")) {
+    popup.classList.toggle("popup-active");
+  }
+
+  if (screenHeight < 960) {
+    playerContainer.classList.toggle("active--hidden");
+    dropdownList.classList.toggle("active--hidden");
+  }
+
+  if (screenWidth < 1020) {
+    main.classList.toggle("active--hidden");
+    quotes.classList.toggle("active--hidden");
+  }
+
+  settings.classList.toggle("settings-active");
+  playListContainer.classList.remove("open-list");
+  dropdownList.classList.remove("dropdown-list-active");
+})
+
+// Показывать содержимое страницы только тогда, когда она будет полностью готова к отображению
+
+window.addEventListener('load', () => {
+  document.getElementsByTagName("html")[0].style.visibility = "visible";
+});
+
+
+
+
